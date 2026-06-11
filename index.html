@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>hrmano — Sache enfin ce que tu gagnes vraiment</title>
+<meta name="description" content="Le cockpit de rémunération des indépendants en société. Vois clairement ce que tu gagnes et ce que tu paies en taxes — sans secrétariat social hors de prix. Accès anticipé." />
+
+<!-- Open Graph / social + ads -->
+<meta property="og:title" content="hrmano — Sache enfin ce que tu gagnes vraiment" />
+<meta property="og:description" content="Le cockpit de rémunération des indépendants en société, en Belgique. Sans secrétariat social hors de prix, sans tickets à 4 semaines." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fr_BE" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0b0f;
+    --bg-soft:#11131b;
+    --card:#15171f;
+    --line:rgba(255,255,255,.08);
+    --ink:#f4f5f7;
+    --muted:#9aa0ad;
+    --brand:#5b8cff;
+    --brand-2:#9b6bff;
+    --accent:#19e6a8;
+    --gold:#ffce5c;
+    --warn:#ff6b6b;
+    --radius:18px;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em;line-height:1.08}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+  /* Ambient glow */
+  .glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .glow::before,.glow::after{content:"";position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.5}
+  .glow::before{background:radial-gradient(circle,#3457c8,transparent 60%);top:-220px;left:-180px}
+  .glow::after{background:radial-gradient(circle,#6f3ad1,transparent 60%);top:140px;right:-220px;opacity:.4}
+
+  /* Nav */
+  nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:14px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}
+  .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:0 0 16px var(--brand)}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .nav-cta{font-weight:600;font-size:14px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--ink);transition:.2s}
+  .nav-cta:hover{border-color:var(--brand);background:rgba(91,140,255,.08)}
+
+  /* Lang toggle */
+  .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:13px;font-weight:700}
+  .lang button{background:transparent;border:0;color:var(--muted);padding:8px 12px;cursor:pointer;font-family:inherit;font-weight:700;transition:.15s}
+  .lang button.active{background:var(--ink);color:var(--bg)}
+
+  /* Hero */
+  header{position:relative;z-index:2;padding:46px 0 30px}
+  .pill{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--accent);
+    background:rgba(25,230,168,.08);border:1px solid rgba(25,230,168,.25);padding:7px 14px;border-radius:999px;margin-bottom:26px}
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(25,230,168,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(25,230,168,.5)}70%{box-shadow:0 0 0 10px rgba(25,230,168,0)}100%{box-shadow:0 0 0 0 rgba(25,230,168,0)}}
+  h1{font-size:clamp(38px,6.4vw,72px);font-weight:800;max-width:14ch}
+  h1 .hl{background:linear-gradient(120deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{margin-top:22px;font-size:clamp(17px,2.3vw,21px);color:var(--muted);max-width:54ch}
+  .sub strong{color:var(--ink);font-weight:600}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Plus Jakarta Sans';font-weight:700;font-size:16px;
+    padding:15px 26px;border-radius:999px;cursor:pointer;border:0;transition:transform .15s ease,box-shadow .2s ease}
+  .btn-primary{background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;box-shadow:0 12px 34px rgba(91,140,255,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(91,140,255,.5)}
+  .btn-ghost{color:var(--ink);border:1px solid var(--line);background:transparent}
+  .btn-ghost:hover{border-color:var(--brand)}
+  .btn-gold{background:linear-gradient(120deg,var(--gold),#ff9e3d);color:#231a00;box-shadow:0 12px 34px rgba(255,206,92,.28)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(255,206,92,.45)}
+  .reassure{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-top:18px}
+  .reassure svg{flex:none}
+
+  /* Trust strip */
+  .trust{position:relative;z-index:2;margin-top:46px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;
+    font-size:13.5px;color:var(--muted);padding-top:26px;border-top:1px solid var(--line)}
+  .trust b{color:var(--ink);font-weight:600}
+
+  /* Sections */
+  section{position:relative;z-index:2;padding:74px 0}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+  h2{font-size:clamp(28px,4.2vw,42px);font-weight:800;max-width:20ch}
+  .lead{color:var(--muted);font-size:18px;margin-top:14px;max-width:58ch}
+
+  /* Pain vs gain */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .panel h3{font-size:19px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .panel.old h3{color:var(--warn)}
+  .panel.new{background:linear-gradient(180deg,rgba(91,140,255,.10),rgba(21,23,31,.6));border-color:rgba(91,140,255,.3)}
+  .panel.new h3{color:var(--accent)}
+  .panel ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .panel li{display:flex;gap:12px;font-size:15.5px;color:var(--muted)}
+  .panel.new li{color:var(--ink)}
+  .ic{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;margin-top:1px}
+  .old .ic{background:rgba(255,107,107,.14);color:var(--warn)}
+  .new .ic{background:rgba(25,230,168,.16);color:var(--accent)}
+
+  /* Features */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.2s}
+  .feat:hover{transform:translateY(-3px);border-color:rgba(91,140,255,.35)}
+  .feat .emoji{font-size:26px}
+  .feat h3{font-size:18px;font-weight:700;margin:14px 0 8px}
+  .feat p{color:var(--muted);font-size:14.5px}
+
+  /* Form / conversion block */
+  .convert{background:linear-gradient(180deg,var(--bg-soft),#0c0d13);border:1px solid var(--line);border-radius:26px;
+    padding:8px;margin-top:18px;overflow:hidden}
+  .convert-inner{display:grid;grid-template-columns:.92fr 1.08fr;gap:8px}
+  .convert-copy{padding:34px 30px}
+  .convert-copy h2{font-size:clamp(26px,3.4vw,36px)}
+
+  /* Soft-cap meter */
+  .cap{margin-top:22px;background:rgba(255,206,92,.06);border:1px solid rgba(255,206,92,.28);border-radius:14px;padding:16px 18px}
+  .cap-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;font-weight:600;color:var(--gold)}
+  .cap-top span:last-child{color:var(--muted);font-weight:500}
+  .bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:10px;overflow:hidden}
+  .bar span{display:block;height:100%;width:44%;border-radius:99px;background:linear-gradient(90deg,var(--gold),#ff9e3d)}
+  .cap-note{font-size:12.5px;color:var(--muted);margin-top:9px}
+
+  .benefits{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:14px}
+  .benefits li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink)}
+  .benefits .ic{background:rgba(25,230,168,.16);color:var(--accent)}
+  .form-card{background:#fff;border-radius:20px;padding:8px 14px;min-height:560px}
+  .form-card iframe{width:100%;border:0}
+  .quote{margin-top:24px;font-size:14.5px;color:var(--muted);font-style:italic;border-left:2px solid var(--brand);padding-left:14px}
+
+  /* Spreds / invest band */
+  .invest{background:linear-gradient(135deg,rgba(255,206,92,.10),rgba(155,107,255,.10));border:1px solid rgba(255,206,92,.25);
+    border-radius:26px;padding:42px;display:grid;grid-template-columns:1.3fr .9fr;gap:30px;align-items:center;margin-top:18px}
+  .invest .eyebrow{color:var(--gold)}
+  .invest h2{font-size:clamp(26px,3.6vw,38px)}
+  .invest p{color:var(--muted);margin-top:14px;font-size:16px}
+  .invest .stat{display:flex;gap:26px;margin-top:22px;flex-wrap:wrap}
+  .invest .stat div b{font-family:'Plus Jakarta Sans';font-weight:800;font-size:30px;display:block;color:var(--ink)}
+  .invest .stat div span{font-size:13px;color:var(--muted)}
+  .invest-cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  .invest-fine{font-size:12px;color:var(--muted);max-width:34ch}
+
+  /* Footer */
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;width:100%}
+  footer a:hover{color:var(--ink)}
+
+  .anchor{scroll-margin-top:30px}
+  [data-i18n]{transition:opacity .15s ease}
+
+  @media(max-width:860px){
+    .split{grid-template-columns:1fr}
+    .grid3{grid-template-columns:1fr}
+    .convert-inner{grid-template-columns:1fr}
+    .convert-copy{padding:26px 22px 6px}
+    .invest{grid-template-columns:1fr;padding:30px}
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">hrmano</div>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#start" class="nav-cta" data-i18n="nav_cta">Accès anticipé →</a>
+    </div>
+  </nav>
+
+  <header>
+    <span class="pill"><span class="pulse"></span><span data-i18n="hero_pill">Accès anticipé · places fondateurs à tarif réduit</span></span>
+    <h1 data-i18n="hero_h1">Sache enfin ce que tu <span class="hl">gagnes vraiment.</span></h1>
+    <p class="sub" data-i18n="hero_sub">
+      hrmano est le <strong>cockpit de rémunération</strong> des indépendants en société.
+      Vois clairement ce que tu gagnes et ce que tu paies en taxes —
+      <strong>sans secrétariat social hors de prix</strong>, sans tickets qui traînent 4 semaines.
+    </p>
+    <div class="cta-row">
+      <a href="#start" class="btn btn-primary" data-i18n="hero_btn1">Rejoindre l'accès anticipé
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#start" class="btn btn-ghost" data-i18n="hero_btn2">Réserver un appel de 15 min</a>
+    </div>
+    <div class="reassure">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#19e6a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="hero_reassure">Gratuit · Aucune carte · Tu laisses ton mail, on te montre tes chiffres.</span>
+    </div>
+
+    <div class="trust">
+      <span data-i18n="trust_lead">Construit avec et pour l'écosystème startup belge.</span>
+    </div>
+  </header>
+</div>
+
+<!-- PAIN vs GAIN -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="pain_eyebrow">Le vrai problème</div>
+    <h2 data-i18n="pain_h2">Tu diriges. Mais tu ne sais pas vraiment combien tu te paies.</h2>
+    <p class="lead" data-i18n="pain_lead">Le secrétariat social classique a été pensé pour les comptables, pas pour les fondateurs. Toi, tu veux une réponse claire, maintenant.</p>
+
+    <div class="split">
+      <div class="panel old">
+        <h3 data-i18n="old_h3">Le secrétariat social classique</h3>
+        <ul>
+          <li><span class="ic">✕</span><span data-i18n="old_1">Des emails-tickets qui mettent 4 semaines à revenir.</span></li>
+          <li><span class="ic">✕</span><span data-i18n="old_2">Des factures opaques, des forfaits qui gonflent.</span></li>
+          <li><span class="ic">✕</span><span data-i18n="old_3">Aucune visibilité sur ce que tu touches réellement, net.</span></li>
+          <li><span class="ic">✕</span><span data-i18n="old_4">Des dizaines de variables fiscales belges que personne ne t'explique.</span></li>
+          <li><span class="ic">✕</span><span data-i18n="old_5">De la paperasse pensée pour un autre siècle.</span></li>
+        </ul>
+      </div>
+      <div class="panel new">
+        <h3 data-i18n="new_h3">Avec hrmano</h3>
+        <ul>
+          <li><span class="ic">✓</span><span data-i18n="new_1">Une vue claire et instantanée de ce que tu gagnes et paies.</span></li>
+          <li><span class="ic">✓</span><span data-i18n="new_2">Des chiffres compréhensibles, pas du jargon de fiche de paie.</span></li>
+          <li><span class="ic">✓</span><span data-i18n="new_3">Optimise ta rémunération avant de signer, pas après.</span></li>
+          <li><span class="ic">✓</span><span data-i18n="new_4">Pensé pour les fondateurs tech qui veulent aller vite.</span></li>
+          <li><span class="ic">✓</span><span data-i18n="new_5">Tu gardes ton focus sur ton business, pas sur l'admin.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat_eyebrow">Ce que tu obtiens</div>
+    <h2 data-i18n="feat_h2">Un cockpit, pas un secrétariat.</h2>
+    <div class="grid3">
+      <div class="feat">
+        <div class="emoji">🎯</div>
+        <h3 data-i18n="feat1_h">Ton net, en clair</h3>
+        <p data-i18n="feat1_p">Salaire, dividendes, frais, cotisations. Une seule vue qui répond à « combien je touche vraiment ? ».</p>
+      </div>
+      <div class="feat">
+        <div class="emoji">⚡</div>
+        <h3 data-i18n="feat2_h">Décide en minutes</h3>
+        <p data-i18n="feat2_p">Simule un changement de rémunération et vois l'impact fiscal direct. Plus d'attente, plus de tickets.</p>
+      </div>
+      <div class="feat">
+        <div class="emoji">🇧🇪</div>
+        <h3 data-i18n="feat3_h">Calibré pour la Belgique</h3>
+        <p data-i18n="feat3_p">Les dizaines de variables de l'indépendant en société, gérées pour toi. Tu restes au courant, jamais perdu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERSION -->
+<section class="anchor" id="start">
+  <div class="wrap">
+    <div class="convert">
+      <div class="convert-inner">
+        <div class="convert-copy">
+          <div class="eyebrow" data-i18n="conv_eyebrow">Accès anticipé</div>
+          <h2 data-i18n="conv_h2">Laisse ton mail. Découvre tes chiffres.</h2>
+
+          <div class="cap">
+            <div class="cap-top">
+              <span data-i18n="cap_title">Places fondateurs à tarif réduit</span>
+              <span><b style="color:var(--gold)">44</b> / 100</span>
+            </div>
+            <div class="bar"><span style="width:44%"></span></div>
+            <div class="cap-note" data-i18n="cap_note">Les 100 premiers entrepreneurs verrouillent l'abonnement fondateur à tarif réduit, à vie. Ensuite, plein tarif.</div>
+          </div>
+
+          <ul class="benefits">
+            <li><span class="ic">✓</span><span data-i18n="conv_b1">Tu rejoins la liste d'accès anticipé et la vague des fondateurs.</span></li>
+            <li><span class="ic">✓</span><span data-i18n="conv_b2">On te montre, sur ta situation, ce que tu gagnes et paies vraiment.</span></li>
+            <li><span class="ic">✓</span><span data-i18n="conv_b3">Optionnel : un appel de 15 min pour prendre la température, entre fondateurs.</span></li>
+          </ul>
+          <p class="quote" data-i18n="conv_quote">« Je t'aide à te payer, à travers les dizaines de variables de la Belgique. » — On parle le même langage, pas celui des comptables.</p>
+        </div>
+        <div class="form-card">
+          <iframe
+            data-tally-src="https://tally.so/embed/zxdAkE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy" width="100%" height="560" frameborder="0" marginheight="0" marginwidth="0"
+            title="Accès anticipé hrmano"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPREDS / INVEST -->
+<section class="anchor" id="invest">
+  <div class="wrap">
+    <div class="invest">
+      <div>
+        <div class="eyebrow" data-i18n="inv_eyebrow">Campagne equity · Live sur Spreds</div>
+        <h2 data-i18n="inv_h2">Tu crois au projet ? Deviens actionnaire.</h2>
+        <p data-i18n="inv_p">Participe au lancement de hrmano via notre campagne de crowdfunding. <strong style="color:var(--ink)">Déduis 45 % du montant</strong> sur ta prochaine fiche fiscale (tax shelter belge) — et ta part prend de la valeur en même temps que hrmano.</p>
+        <div class="stat">
+          <div><b>45%</b><span data-i18n="inv_s1">déduction fiscale</span></div>
+          <div><b>1 000</b><span data-i18n="inv_s2">entrepreneurs visés</span></div>
+          <div><b>Live</b><span data-i18n="inv_s3">campagne ouverte</span></div>
+        </div>
+      </div>
+      <div class="invest-cta">
+        <a href="https://www.spreds.com/fr/compartments/10909-hrmano" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="inv_btn">Investir via Spreds →</a>
+        <p class="invest-fine" data-i18n="inv_fine">Investir comporte un risque de perte. La déduction fiscale dépend de ta situation personnelle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:16px">hrmano</div>
+    <div data-i18n="foot_tag">Le cockpit de rémunération des indépendants en société · Bruxelles 🇧🇪</div>
+    <div><a href="https://www.spreds.com/fr/compartments/10909-hrmano" target="_blank" rel="noopener" data-i18n="foot_link">Investir via Spreds →</a></div>
+  </div>
+</footer>
+
+<!-- i18n -->
+<script>
+const I18N = {
+  en: {
+    nav_cta: "Early access →",
+    hero_pill: "Early access · discounted founder seats",
+    hero_h1: 'Finally know what you <span class="hl">actually earn.</span>',
+    hero_sub: 'hrmano is the <strong>remuneration cockpit</strong> for incorporated freelancers. See clearly what you earn and what you pay in tax — <strong>without an expensive social secretariat</strong>, without tickets that drag on for 4 weeks.',
+    hero_btn1: 'Join early access <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    hero_btn2: "Book a 15-min call",
+    hero_reassure: "Free · No card · Leave your email, we show you your numbers.",
+    trust_lead: "Built with and for the Belgian startup ecosystem.",
+    pain_eyebrow: "The real problem",
+    pain_h2: "You run the company. But you don't really know what you pay yourself.",
+    pain_lead: "The classic social secretariat was built for accountants, not for founders. You want a clear answer, now.",
+    old_h3: "The classic social secretariat",
+    old_1: "Email-tickets that take 4 weeks to come back.",
+    old_2: "Opaque invoices, packages that keep inflating.",
+    old_3: "Zero visibility on what you actually take home, net.",
+    old_4: "Dozens of Belgian tax variables nobody explains to you.",
+    old_5: "Paperwork designed for another century.",
+    new_h3: "With hrmano",
+    new_1: "A clear, instant view of what you earn and pay.",
+    new_2: "Numbers you understand — not payslip jargon.",
+    new_3: "Optimise your pay before you sign, not after.",
+    new_4: "Built for tech founders who want to move fast.",
+    new_5: "Keep your focus on your business, not the admin.",
+    feat_eyebrow: "What you get",
+    feat_h2: "A cockpit, not a secretariat.",
+    feat1_h: "Your net, in clear terms",
+    feat1_p: "Salary, dividends, expenses, contributions. One view that answers “how much do I actually take home?”",
+    feat2_h: "Decide in minutes",
+    feat2_p: "Simulate a change in pay and see the tax impact instantly. No more waiting, no more tickets.",
+    feat3_h: "Calibrated for Belgium",
+    feat3_p: "The dozens of variables of an incorporated freelancer, handled for you. You stay informed, never lost.",
+    conv_eyebrow: "Early access",
+    conv_h2: "Leave your email. Discover your numbers.",
+    cap_title: "Discounted founder seats",
+    cap_note: "The first 100 entrepreneurs lock in the founder rate for life. After that, full price.",
+    conv_b1: "You join the early-access list and the founders' wave.",
+    conv_b2: "We show you, on your situation, what you really earn and pay.",
+    conv_b3: "Optional: a 15-min call to take the temperature, founder to founder.",
+    conv_quote: "“I help you pay yourself, through Belgium's dozens of variables.” — We speak your language, not the accountants'.",
+    inv_eyebrow: "Equity campaign · Live on Spreds",
+    inv_h2: "Believe in it? Become a shareholder.",
+    inv_p: 'Back the launch of hrmano through our crowdfunding campaign. <strong style="color:var(--ink)">Deduct 45% of the amount</strong> on your next tax return (Belgian tax shelter) — and your stake grows in value alongside hrmano.',
+    inv_s1: "tax deduction",
+    inv_s2: "entrepreneurs targeted",
+    inv_s3: "campaign open",
+    inv_btn: "Invest via Spreds →",
+    inv_fine: "Investing carries a risk of loss. The tax deduction depends on your personal situation.",
+    foot_tag: "The remuneration cockpit for incorporated freelancers · Brussels 🇧🇪",
+    foot_link: "Invest via Spreds →"
+  }
+};
+
+const els = document.querySelectorAll('[data-i18n]');
+// capture original FR
+const FR = {};
+els.forEach(el => FR[el.dataset.i18n] = el.innerHTML);
+
+function setLang(lang){
+  const dict = lang === 'en' ? I18N.en : FR;
+  els.forEach(el => {
+    const v = lang === 'en' ? I18N.en[el.dataset.i18n] : FR[el.dataset.i18n];
+    if (v != null) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang button').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('hrmano_lang', lang); } catch(e){}
+}
+
+document.querySelectorAll('.lang button').forEach(b =>
+  b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+// init: stored pref, else browser language, else FR
+const stored = (()=>{try{return localStorage.getItem('hrmano_lang')}catch(e){return null}})();
+setLang(stored || ((navigator.language||'').toLowerCase().startsWith('en') ? 'en' : 'fr'));
+</script>
+
+<!-- Tally embed loader -->
+<script>
+var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+</script>
+</body>
+</html>
