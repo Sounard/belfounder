@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Swipe File — The Hackathon Playbook</title>
+<meta name="description" content="Copy-paste hackathon artifacts: the sponsor first-touch email, the prospectus, the judge briefing, the opening ceremony script, the next-30-days card."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/playbook.css"/>
+</head>
+<body>
+
+<nav class="site"><div class="wrap bar">
+  <a class="brand" href="./"><span class="glyph">7</span> The Hackathon Playbook</a>
+  <div class="navlinks">
+    <a href="manual.html">Manual</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="templates.html" class="active">Templates</a>
+    <a href="agent-pack.html" class="cta">Install the agent →</a>
+  </div>
+</div></nav>
+
+<header class="mesh"><div class="wrap hero" style="padding:72px 0 48px">
+  <span class="overline">The Swipe File</span>
+  <h1 style="font-size:clamp(34px,4.8vw,52px)">Steal these. <span class="serif">Verbatim.</span></h1>
+  <p class="sub">The five artifacts every organiser rewrites from scratch, pre-written. One click to copy,
+  placeholders in {BRACES}. The agent pack personalizes them for your event automatically.</p>
+  <a class="btn dark" href="downloads/hackathon-agent-pack.zip" download>Download all as markdown ↓</a>
+</div></header>
+
+<section class="block tight"><div class="wrap" id="cards"></div></section>
+
+<footer class="site"><div class="wrap cols">
+  <div><div class="fbrand">The Hackathon Playbook</div>Every rule in these templates is sourced — see the <a href="manual.html">manual</a>.</div>
+  <div style="text-align:right"><a href="./">Home</a> · <a href="manual.html">Manual</a> · <a href="timeline.html">Timeline</a> · <a href="agent-pack.html">Agent Pack</a></div>
+</div></footer>
+
+<script type="text/plain" id="t-email">
+# Sponsor first-touch email
+
+Rules: plain text. Zero links, zero attachments, zero images (corporate spam filters
+kill them — the prospectus goes in the follow-up). To a DevRel / Recruiting / Marketing
+title, or the CEO. Never a random engineer.
+
+---
+
+Subject: {EVENT NAME} — {N} builders in {CITY}, {MONTH}
+
+Hi {FIRST NAME},
+
+I'm {NAME}, organising {EVENT NAME} — {ONE LINE: what it is, e.g. "a 12-hour AI build
+day bringing 150 selected builders together in Brussels on 14 March"}.
+
+Why I'm writing to you specifically: {ONE LINE connecting their company to the event —
+their API fits the theme / they're hiring the profile in the room / they sponsored a
+similar event}.
+
+Last edition / our traction so far: {ONE PROOF POINT — registrations, venue, partners,
+or for a first edition: the team and the community behind it}.
+
+We have a small number of partner slots. Depending on what matters to you — developers
+building on your product, meeting the talent in the room, or brand presence — there's
+a package shaped for it, from {LOW} to {HIGH}.
+
+Worth a 20-minute call this week or next?
+
+{NAME}
+{ROLE, EVENT} · {PHONE}
+
+---
+
+## Follow-up cadence
+
+- +10 days: short bump + attach the prospectus now. "Circling back — attaching the
+  partner deck. The {TIER} slots are moving; happy to hold one for a call."
+- +20 days: final bump, one line, offer the custom option.
+- On the call, ask directly: "For events like this in the past — what did you spend,
+  and what did you get out of it?" Send the customized proposal same day.
+- The moment they say yes: send the invoice.
+</script>
+
+<script type="text/plain" id="t-prospectus">
+# Sponsor prospectus — 2–3 pages, no more
+
+Rules: three tiers, each anchored to ONE buyer lane. Top tier ≤25% of your total
+budget. Prize parity across sponsors. Always offer custom packages. PDF, designed
+lightly, numbers up front.
+
+## Page 1 — The event
+
+- Name, date, city, venue (photo).
+- One sentence: what happens and who's in the room.
+- The numbers bar: expected attendees · % students vs. professionals · projects
+  expected (attendees ÷ 4) · past-edition stats or community size.
+- Who else is in (anchor brands legitimize you — list confirmed partners early).
+
+## Page 2 — The tiers
+
+| | Bronze — Brand | Silver — Recruiting | Gold — Adoption |
+|---|---|---|---|
+| Price | € | €€ | €€€ (≤25% of budget) |
+| Logo + social | yes | yes | yes |
+| Swag/surfaces (lanyards, shirts) | yes | yes | yes |
+| Booth + floor presence | | yes | yes |
+| Resume book + interview room | | yes | yes |
+| Opening-ceremony slot (short) | | yes | yes |
+| "Best Use of X" challenge track | | | yes |
+| Workshop slot + dedicated channel | | | yes |
+| Pre-event setup webinar | | | yes |
+| Judge seat | | | yes |
+
+Credits/in-kind: welcomed as add-ons; API credits for all participants is a first-class
+adoption deliverable. (Keep some cash tiers — someone has to feed the builders.)
+
+## Page 3 — Why it works + logistics
+
+- What sponsors got last time (integrations built, hires made, content produced) — or
+  the design that guarantees it (demo-or-die, curated room, staffed-floor requirement).
+- Your commitment to them: post-event metrics report within 48h.
+- Their commitment to you: a staffed table and humans walking the floor (presence is
+  what makes sponsorship work — say it in the deck).
+- Contact + invoice details.
+</script>
+
+<script type="text/plain" id="t-judge">
+# Judge briefing — one page, sent T-3 days + spoken at calibration
+
+Thank you for judging {EVENT}. Here's everything, in two minutes.
+
+**When/where:** arrive {TIME} at {PLACE}; judging runs {WINDOW}; you're free by {END}.
+
+**Format:** science fair. You'll visit ~{N} assigned projects, ~4 minutes each
+(2 min demo, 1 min questions, 1 min walking). Assignments are staggered — judge only
+your list.
+
+**The rubric (participants have had it since kickoff):**
+{RUBRIC — e.g. working demo · technical execution · originality · impact}
+
+**How you score:** you don't fill scorecards. At the end, give us your **top 3**, in
+order. That's it. (We aggregate 3/2/1 across judges and verify the leaders ourselves.)
+
+**Calibration notes:**
+- Judge the artifact, not the slideware — a wobbly live demo of a real thing beats a
+  polished deck of a fake one.
+- Reward learning and ambition over startup polish. Most of these people aren't
+  fundraising; some are building for the first time. The first-timer who shipped
+  something real is exactly who this event is for.
+- If a live demo breaks for infrastructure reasons, ask them to show it another way —
+  judge what was built, not the luck.
+- 2 minutes can't prove scalability. Don't ask it to.
+- You're a highlight of their weekend. Be generous with questions; your attention is
+  part of the prize.
+
+**Day-of contact:** {NAME} — {PHONE}.
+</script>
+
+<script type="text/plain" id="t-opening">
+# Opening ceremony script — 15 minutes, hard cap
+
+Never open with logistics. The opening installs the mission and the one goal; the
+rules take five minutes at the end.
+
+## 0:00 — Cold open (no "welcome, housekeeping first")
+
+Lights, music cut, one person, one line:
+
+> "{PUNCH LINE — e.g. 'Twelve hours from now, every one of you will have shipped
+> something that didn't exist this morning.'}"
+
+## 0:01–0:06 — The mission (why this, why now, why you)
+
+- Why this event exists — the cause, the launch, the city, the moment.
+- Why *these* people — "you applied, you were selected, this room is the product."
+- The identity line: "Some of you have never built anything. By tonight that sentence
+  will be false. That's the whole point."
+
+## 0:06–0:08 — The ONE goal
+
+> "One deliverable: a working demo. Live. No slides. On this stage at {TIME}.
+> The clock is on the wall."
+
+## 0:08–0:10 — The rubric (publish it now)
+
+Read the 3–4 criteria out loud. "This is exactly how you win. Build for it."
+
+## 0:10–0:14 — Rules & rhythm, fast
+
+- Teams: 3–4, confirmed by {TIME}. Solo? The matching board is at {PLACE}.
+- Help: @mentor in {CHANNEL} + mentors in {COLOR} shirts do rounds every hour.
+- Checkpoint at {TIME}: every team states what they're cutting. (You'll finish a
+  quarter of what you plan. Everyone does. Cut early.)
+- Meals at {TIMES}, shared tables — talk to strangers. Quiet room at {PLACE}.
+- Code of conduct, one line, and mean it: "Everyone builds here. Anyone who makes that
+  harder gets walked out."
+- First-timers: raise your hands. *Applause.* "You're why this exists. {SHEPHERD NAME}
+  is yours all day."
+
+## 0:14–0:15 — Go
+
+> "Sponsors fed you, judges cleared their day for you, and the demo stage is already
+> set up — it's waiting for you. Build. GO."
+
+Countdown starts on screen. Music up.
+</script>
+
+<script type="text/plain" id="t-30days">
+# The next-30-days card
+
+Print one per team. Hand out 30 minutes before demos; collect a photo of each at
+check-in to the demo stage. This two-line ritual is the single cheapest predictor of
+whether a project survives the weekend (written intention formed at peak motivation).
+
+---
+
+## {EVENT NAME} — What happens next
+
+**Team:** ______________________ **Project:** ______________________
+
+**In the next 30 days, we will:**
+
+1. ________________________________________________________________
+
+2. ________________________________________________________________
+
+**The first step happens on (date):** ______________
+
+**Who's on it:** ______________________
+
+**Where the project will live (repo / page / channel):** ______________________
+
+---
+
+*We'll check in on {DATE +30d}. The {FOLLOW-UP CONTAINER — demo day / hack night /
+community channel} is on {DATE} — bring what you've got, whatever state it's in.*
+</script>
+
+<script>
+const CARDS=[
+ ['t-email','✉️','The sponsor first-touch email','Plain text, zero links — with the full follow-up cadence'],
+ ['t-prospectus','📑','The 2-page prospectus','Three tiers, three buyer lanes, prize parity built in'],
+ ['t-judge','⚖️','The judge briefing','One page: format, rubric, stack-rank scoring, calibration notes'],
+ ['t-opening','🎤','The opening ceremony script','15 minutes, hard cap — mission before wifi passwords'],
+ ['t-30days','🌱','The next-30-days card','The cheapest project-survival intervention that exists'],
+];
+const root=document.getElementById('cards');
+CARDS.forEach(([id,ic,title,hint],i)=>{
+  const raw=document.getElementById(id).textContent.trim();
+  const el=document.createElement('div');
+  el.className='tcard'+(i===0?' open':'');
+  el.innerHTML=`<div class="thd"><span class="chip7${i%3===1?' moss':i%3===2?' gold':''}">${ic}</span>
+    <h3>${title}</h3><span class="hint">${hint}</span>
+    <button class="copybtn">Copy</button></div>
+    <div class="tbody"><pre></pre></div>`;
+  el.querySelector('pre').textContent=raw;
+  el.querySelector('.thd').addEventListener('click',e=>{
+    if(e.target.classList.contains('copybtn'))return;
+    el.classList.toggle('open');
+  });
+  el.querySelector('.copybtn').addEventListener('click',async e=>{
+    try{ await navigator.clipboard.writeText(raw); }
+    catch(_){ // non-secure context fallback
+      const ta=document.createElement('textarea');ta.value=raw;document.body.appendChild(ta);
+      ta.select();document.execCommand('copy');ta.remove();
+    }
+    e.target.textContent='Copied ✓';e.target.classList.add('ok');
+    setTimeout(()=>{e.target.textContent='Copy';e.target.classList.remove('ok');},1800);
+  });
+  root.appendChild(el);
+});
+</script>
+</body>
+</html>

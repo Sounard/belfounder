@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Master Timeline — The Hackathon Playbook</title>
+<meta name="description" content="The consensus countdown of 35+ hackathon playbooks. Type your event date — every deadline becomes real, checkable, and saved."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/playbook.css"/>
+</head>
+<body>
+
+<nav class="site"><div class="wrap bar">
+  <a class="brand" href="./"><span class="glyph">7</span> The Hackathon Playbook</a>
+  <div class="navlinks">
+    <a href="manual.html">Manual</a>
+    <a href="timeline.html" class="active">Timeline</a>
+    <a href="templates.html">Templates</a>
+    <a href="agent-pack.html" class="cta">Install the agent →</a>
+  </div>
+</div></nav>
+
+<header class="mesh"><div class="wrap hero" style="padding:72px 0 48px">
+  <span class="overline">The Master Timeline</span>
+  <h1 style="font-size:clamp(34px,4.8vw,52px)">Every deadline, on <span class="serif">your</span> calendar.</h1>
+  <p class="sub">The consensus countdown of 35+ playbooks, with the hard numbers attached.
+  Pick your track, type your event date — the whole plan turns into real dates. Ticks are saved in this browser.</p>
+  <div class="trackswitch" role="tablist">
+    <button id="ta" class="on">Track A · Flagship weekend</button>
+    <button id="tb">Track B · 3–12h sprint</button>
+  </div>
+  <div class="datein">
+    <label style="font-weight:600;font-size:15px" for="edate">Event date</label>
+    <input type="date" id="edate"/>
+    <span id="countdown" style="font-family:var(--font-mono);font-size:13.5px;color:var(--blurple);font-weight:600"></span>
+  </div>
+</div></header>
+
+<section class="block tight"><div class="wrap" id="phases"></div></section>
+
+<section class="block tight"><div class="wrap">
+  <div class="killer">
+    <h3 style="font-size:22px;margin-bottom:14px">☠️ The five deadlines that kill events</h3>
+    <ol style="margin-left:20px;font-size:15.5px;display:grid;gap:9px">
+      <li><b>Venue not signed by T-3 months</b> — everything downstream blocks on it.</li>
+      <li><b>Sponsor outreach starting after T-3 months</b> — pipelines take 6–10 weeks to close.</li>
+      <li><b>Registration below 150% at T-1 week</b> — you will demo to an empty room.</li>
+      <li><b>Teams not formed by hour zero</b> — the first 3 hours evaporate.</li>
+      <li><b>No follow-up container announced at close</b> — the event evaporates instead.</li>
+    </ol>
+  </div>
+  <div style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
+    <a class="btn primary" href="agent-pack.html">Let the agent date &amp; own every task <span class="arr">→</span></a>
+    <a class="btn ghost" href="downloads/hackathon-playbook-full.zip" download>Download as markdown ↓</a>
+    <button class="btn ghost" onclick="window.print()">Print / PDF</button>
+  </div>
+</div></section>
+
+<footer class="site"><div class="wrap cols">
+  <div><div class="fbrand">The Hackathon Playbook</div>Sources &amp; numbers: see the <a href="manual.html#appendix">manual appendix</a>.</div>
+  <div style="text-align:right"><a href="./">Home</a> · <a href="manual.html">Manual</a> · <a href="templates.html">Templates</a></div>
+</div></footer>
+
+<script>
+/* offsets in days before event (negative = after) */
+const TRACK_A = [
+ {t:'Decide', off:150, sub:'Goal, team, date — and the venue hunt starts NOW.', tasks:[
+  ['<b>Pick ONE goal</b> and write it in one sentence — every later decision inherits from it'],
+  ['Leadership team: lead + owners for logistics, finance, marketing, hacker experience'],
+  ['Date locked — checked against exams, holidays, rival events'],
+  ['<b>Venue hunt starts</b> — warm intros, <span class="n">~3 pitches/week</span>, it can eat <span class="n">40%</span> of your effort'],
+  ['Student event? Apply to MLH / lab support programs (they want 3–4 months notice)']]},
+ {t:'Fund', off:120, sub:'Budget and the sponsor pipeline.', tasks:[
+  ['Budget sheet: food <span class="n">$8–10</span>/person/meal, snacks $10, shirts $5–8, <b>+$1–3k contingency, non-negotiable</b>'],
+  ['Prospectus: 2–3 pages, 3 tiers each anchored to ONE lane (adoption/recruiting/brand), <b>top tier ≤25% of budget</b>'],
+  ['<b>Sponsor outreach opens</b>: plain-text first email, ZERO links, to DevRel/HR/Marketing or the CEO'],
+  ['Cadence: call → same-day proposal → 3 follow-ups 1–2 weeks apart → <b>invoice on yes</b> (Q1/Q4 = loosest budgets)'],
+  ['Placeholder site + social handles live']]},
+ {t:'Open', off:90, sub:'Registration and marketing go live.', tasks:[
+  ['Full website + <b>registration opens</b> — the form primes builder identity (ask what they\'ve made)'],
+  ['If curating: publish the judge lineup before applications close'],
+  ['Marketing live: local community first. Funnel for 500-cap: <span class="n">100 by T-2mo · 250 by T-1mo · 600 by T-2wk · 1,000 by T-1wk</span>']]},
+ {t:'Staff', off:60, sub:'Judges, mentors, workshops, vendors, software.', tasks:[
+  ['Judging plan: expect <span class="n">1 project per 4 attendees</span>; judges = <span class="n">⌈(P×3×4′)/window⌉</span> — book them'],
+  ['Rubric written now, published at kickoff (demo · execution · originality · impact — consider <em>shippability</em>)'],
+  ['Mentors: slotted signup, scheduled circulation, #mentorship channel, mentor station, 1-page guide'],
+  ['Workshops + mini-events at fixed windows (1 helper per 10–20; 45–90 min)'],
+  ['Food vendors booked — order down the decay curve (<span class="n">90% → 30%</span> claims). Never pizza-only'],
+  ['Event software chosen. <b>Never hand-roll day-of infra you haven\'t load-tested</b>']]},
+ {t:'Choreograph', off:30, sub:'Run of show and venue logistics closed.', tasks:[
+  ['Run of show, minute by minute, an owner per block'],
+  ['Venue logistics closed: insurance, waivers, security, AV, quiet room (allow a full month from venue “yes”)'],
+  ['Transport, dietary needs, accessibility'],
+  ['Comms cadence running — redundant channels (email + chat + SMS)'],
+  ['Team formation opens — <b>teams of 3–4 exist by hour zero, cap 5</b>']]},
+ {t:'Converge', off:14, sub:'One deadline to rule them all.', tasks:[
+  ['Registration at 100% of physical capacity (keep pushing to 200%)'],
+  ['<b>ONE consolidated paperwork deadline</b> — waivers, forms, teams: one date, redundant reminders'],
+  ['Press / media outreach']]},
+ {t:'Rehearse', off:7, sub:'The week of truth.', tasks:[
+  ['<b>Registration at 200% of capacity</b> (free events no-show ~50%)'],
+  ['Judge + mentor confirmations; 15-min judge calibration scheduled'],
+  ['Full-team run-of-show walkthrough + contingency plan'],
+  ['Final attendee email: what to bring, when, the one goal'],
+  ['Print handouts, signage, welcome slides; venue walk-through at T-1 day']]},
+ {t:'Game day', off:0, sub:'The middle is sacred.', tasks:[
+  ['Threshold moment at the door: named check-in, badge, music. QR + paper backup'],
+  ['Opening ≤15 min: mission cold-open → the ONE goal → rubric published → rules in 5 → go. <b>Never open with wifi passwords</b>'],
+  ['Protect build blocks; mentors on schedule; <b>mid-point checkpoint</b> — every team states what it\'s cutting (teams finish <span class="n">~25%</span> of scope)'],
+  ['Meals at shared tables; one surprise micro-event; quiet room; T-1h warning'],
+  ['<b>Before demos: every team writes a 2-line next-30-days plan</b>'],
+  ['Demos: everyone, live, <span class="n">2–3 min</span>, hard cut, no slides. &lt;200 people → full room; &gt;200 → science fair, 3 judges/project'],
+  ['Stack-rank scoring (top 3 per judge, 3/2/1); organizers verify the top 5'],
+  ['Double close: inward (winner stories) → outward (<b>announce the next date from the stage</b>). Never end on prize logistics']]},
+ {t:'Close the loop', off:-7, sub:'The week that decides if the event compounds.', tasks:[
+  ['Surveys: attendees + sponsors, within 48h'],
+  ['<b>Sponsor report within 48h</b>: metrics, highlights, gallery, re-up offer — this email is next year\'s budget'],
+  ['Pay every invoice; publish finances if you\'re brave'],
+  ['Public recap + winner-story posts — hand winners the megaphone'],
+  ['Projects live somewhere permanent (gallery, pinned repos)'],
+  ['Follow-up container activated: demo day / hack night / incubation for top teams'],
+  ['Team retrospective, written, filed for the next organiser']]}
+];
+const TRACK_B = [
+ {t:'Aim', off:42, sub:'Goal, format, venue, partners.', tasks:[
+  ['Goal + format: 3h lightning or 12h build day'],
+  ['Venue via warm intro — one prestige-coded room beats big'],
+  ['Partners: 1–2 sponsors providing <b>credits + judges</b>, not cash tiers']]},
+ {t:'Open the funnel', off:35, sub:'Applications, not registration.', tasks:[
+  ['Applications open — form primes identity: GitHub, something shipped'],
+  ['<b>Publish the judge lineup now</b> — people apply to be seen by specific humans'],
+  ['Visible waitlist; cap below expected demand']]},
+ {t:'Lock the core', off:28, sub:'Judges, rubric, setup guide.', tasks:[
+  ['Judges + mentors confirmed; rubric written'],
+  ['Partner setup guide drafted (API keys, quickstarts) — <b>setup failure is the #1 killer of short formats</b>']]},
+ {t:'Compose the room', off:21, sub:'First acceptances; the funnel is the brand.', tasks:[
+  ['First acceptance wave; publicize the funnel (“800 applied, 120 building”)'],
+  ['Discord opens; team formation starts — <b>teams exist before hour zero or the event fails</b>']]},
+ {t:'Pre-flight', off:14, sub:'Everyone builds hello-world BEFORE the day.', tasks:[
+  ['Pre-event setup webinar / quickstart drop — every builder has working keys'],
+  ['Final acceptances + waitlist promotions']]},
+ {t:'Choreograph', off:7, sub:'Run of show + countdown comms.', tasks:[
+  ['Run of show: doors → 15-min opening → build → checkpoint → build → hard stop → demos → double close'],
+  ['Food: 1–2 meals + coffee, shared tables'],
+  ['Reminder cadence with countdown']]},
+ {t:'Game day', off:0, sub:'Compression is the feature.', tasks:[
+  ['Threshold at the door; mission cold-open; one goal on the wall with the clock'],
+  ['Mentors on a workflow (@mentor + rounds); mid-point checkpoint'],
+  ['<b>Everyone demos, live, 2 min, no slides</b>'],
+  ['Access-prizes: dinner with the founders, early access, credits'],
+  ['Double close with the next date']]},
+ {t:'Afterglow', off:-3, sub:'72 hours to compound.', tasks:[
+  ['Winner-story posts + gallery live'],
+  ['Partner usage report'],
+  ['Waitlist rolled into the next event\'s audience']]}
+];
+
+const params = new URLSearchParams(location.search);
+let track = params.get('track')==='b' ? 'B' : 'A';
+const KEY = ()=>'hp_tl_'+track;
+let ticks = {};
+const $ = id=>document.getElementById(id);
+
+function fmt(d){ return d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}); }
+function offLabel(off){
+  if(off===0) return 'T-0';
+  if(off<0) return 'T+'+(-off)+'d';
+  if(off%30===0) return 'T-'+(off/30)+'mo';
+  if(off%7===0) return 'T-'+(off/7)+'wk';
+  return 'T-'+off+'d';
+}
+function render(){
+  ticks = JSON.parse(localStorage.getItem(KEY())||'{}');
+  const data = track==='A'?TRACK_A:TRACK_B;
+  const ev = $('edate').value ? new Date($('edate').value+'T12:00:00') : null;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const root = $('phases'); root.innerHTML='';
+  if(ev){
+    const days = Math.round((ev-today)/864e5);
+    $('countdown').textContent = days>0 ? '⏳ '+days+' days out' : days===0 ? '🔥 today' : '✅ '+(-days)+' days ago';
+  } else $('countdown').textContent='';
+  data.forEach((ph,pi)=>{
+    let dateHtml = offLabel(ph.off), late='';
+    if(ev){
+      const d = new Date(ev); d.setDate(d.getDate()-ph.off);
+      const isLate = d < today && ph.off>0 && !(ticks['p'+pi]||[]).length;
+      dateHtml = fmt(d)+' · '+offLabel(ph.off);
+      late = isLate?' late':'';
+      if(isLate) dateHtml += ' — behind, recover now';
+    }
+    const el = document.createElement('div');
+    el.className='phase';
+    el.innerHTML = `<div class="phead"><span class="chip7${pi%3===1?' moss':pi%3===2?' gold':''}">${pi+1}</span>
+      <h3>${ph.t}</h3><span class="pdate${late}">${dateHtml}</span></div>
+      <div class="psub">${ph.sub}</div>` +
+      ph.tasks.map((tk,ti)=>{
+        const on = (ticks['p'+pi]||[]).includes(ti);
+        return `<div class="task${on?' done':''}" data-p="${pi}" data-t="${ti}">
+          <div class="box">✓</div><div class="tx">${tk[0]}</div></div>`;
+      }).join('');
+    root.appendChild(el);
+  });
+  root.querySelectorAll('.task').forEach(t=>t.addEventListener('click',()=>{
+    const p='p'+t.dataset.p, i=+t.dataset.t;
+    ticks[p]=ticks[p]||[];
+    if(ticks[p].includes(i)) ticks[p]=ticks[p].filter(x=>x!==i); else ticks[p].push(i);
+    localStorage.setItem(KEY(), JSON.stringify(ticks));
+    t.classList.toggle('done');
+  }));
+}
+$('ta').onclick=()=>{track='A';$('ta').classList.add('on');$('tb').classList.remove('on');render();};
+$('tb').onclick=()=>{track='B';$('tb').classList.add('on');$('ta').classList.remove('on');render();};
+if(track==='B'){$('tb').classList.add('on');$('ta').classList.remove('on');}
+const savedDate = localStorage.getItem('hp_edate');
+if(savedDate) $('edate').value = savedDate;
+$('edate').addEventListener('change',()=>{localStorage.setItem('hp_edate',$('edate').value);render();});
+render();
+</script>
+</body>
+</html>

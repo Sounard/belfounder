@@ -1,426 +1,312 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>hrmano — Sache enfin ce que tu gagnes vraiment</title>
-<meta name="description" content="Le cockpit de rémunération des indépendants en société. Vois clairement ce que tu gagnes et ce que tu paies en taxes — sans secrétariat social hors de prix. Accès anticipé." />
-<link rel="canonical" href="https://befounders.eu/" />
-
-<!-- Open Graph / social + ads -->
-<meta property="og:title" content="hrmano — Sache enfin ce que tu gagnes vraiment" />
-<meta property="og:description" content="Le cockpit de rémunération des indépendants en société, en Belgique. Sans secrétariat social hors de prix, sans tickets à 4 semaines." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://befounders.eu/" />
-<meta property="og:locale" content="fr_BE" />
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Hackathon Playbook — from first-timer to world-class organiser in 10 minutes</title>
+<meta name="description" content="The distilled operating system for running exceptional hackathons — 35+ playbooks and research papers compressed into a field manual, an interactive timeline, and a done-for-you AI agent pack."/>
+<link rel="canonical" href="https://befounders.eu/"/>
+<meta property="og:title" content="The Hackathon Playbook"/>
+<meta property="og:description" content="Turn a room of consumers into a room of builders. 35+ playbooks distilled. One prompt, 10 minutes."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://befounders.eu/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --bg:#0a0b0f;
-    --bg-soft:#11131b;
-    --card:#15171f;
-    --line:rgba(255,255,255,.08);
-    --ink:#f4f5f7;
-    --muted:#9aa0ad;
-    --brand:#5b8cff;
-    --brand-2:#9b6bff;
-    --accent:#19e6a8;
-    --gold:#ffce5c;
-    --warn:#ff6b6b;
-    --radius:18px;
-    --max:1080px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Inter',system-ui,-apple-system,sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,.display{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em;line-height:1.08}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
-
-  /* Ambient glow */
-  .glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .glow::before,.glow::after{content:"";position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.5}
-  .glow::before{background:radial-gradient(circle,#3457c8,transparent 60%);top:-220px;left:-180px}
-  .glow::after{background:radial-gradient(circle,#6f3ad1,transparent 60%);top:140px;right:-220px;opacity:.4}
-
-  /* Nav */
-  nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:14px}
-  .brand{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}
-  .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:0 0 16px var(--brand)}
-  .nav-right{display:flex;align-items:center;gap:12px}
-  .nav-cta{font-weight:600;font-size:14px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--ink);transition:.2s}
-  .nav-cta:hover{border-color:var(--brand);background:rgba(91,140,255,.08)}
-
-  /* Lang toggle */
-  .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:13px;font-weight:700}
-  .lang button{background:transparent;border:0;color:var(--muted);padding:8px 12px;cursor:pointer;font-family:inherit;font-weight:700;transition:.15s}
-  .lang button.active{background:var(--ink);color:var(--bg)}
-
-  /* Hero */
-  header{position:relative;z-index:2;padding:46px 0 30px}
-  .pill{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--accent);
-    background:rgba(25,230,168,.08);border:1px solid rgba(25,230,168,.25);padding:7px 14px;border-radius:999px;margin-bottom:26px}
-  .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(25,230,168,.6);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(25,230,168,.5)}70%{box-shadow:0 0 0 10px rgba(25,230,168,0)}100%{box-shadow:0 0 0 0 rgba(25,230,168,0)}}
-  h1{font-size:clamp(38px,6.4vw,72px);font-weight:800;max-width:14ch}
-  h1 .hl{background:linear-gradient(120deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{margin-top:22px;font-size:clamp(17px,2.3vw,21px);color:var(--muted);max-width:54ch}
-  .sub strong{color:var(--ink);font-weight:600}
-
-  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
-  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Plus Jakarta Sans';font-weight:700;font-size:16px;
-    padding:15px 26px;border-radius:999px;cursor:pointer;border:0;transition:transform .15s ease,box-shadow .2s ease}
-  .btn-primary{background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;box-shadow:0 12px 34px rgba(91,140,255,.35)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(91,140,255,.5)}
-  .btn-ghost{color:var(--ink);border:1px solid var(--line);background:transparent}
-  .btn-ghost:hover{border-color:var(--brand)}
-  .btn-gold{background:linear-gradient(120deg,var(--gold),#ff9e3d);color:#231a00;box-shadow:0 12px 34px rgba(255,206,92,.28)}
-  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(255,206,92,.45)}
-  .reassure{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-top:18px}
-  .reassure svg{flex:none}
-
-  /* Trust strip */
-  .trust{position:relative;z-index:2;margin-top:46px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;
-    font-size:13.5px;color:var(--muted);padding-top:26px;border-top:1px solid var(--line)}
-  .trust b{color:var(--ink);font-weight:600}
-
-  /* Sections */
-  section{position:relative;z-index:2;padding:74px 0}
-  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
-  h2{font-size:clamp(28px,4.2vw,42px);font-weight:800;max-width:20ch}
-  .lead{color:var(--muted);font-size:18px;margin-top:14px;max-width:58ch}
-
-  /* Pain vs gain */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
-  .panel h3{font-size:19px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px}
-  .panel.old h3{color:var(--warn)}
-  .panel.new{background:linear-gradient(180deg,rgba(91,140,255,.10),rgba(21,23,31,.6));border-color:rgba(91,140,255,.3)}
-  .panel.new h3{color:var(--accent)}
-  .panel ul{list-style:none;display:flex;flex-direction:column;gap:14px}
-  .panel li{display:flex;gap:12px;font-size:15.5px;color:var(--muted)}
-  .panel.new li{color:var(--ink)}
-  .ic{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;margin-top:1px}
-  .old .ic{background:rgba(255,107,107,.14);color:var(--warn)}
-  .new .ic{background:rgba(25,230,168,.16);color:var(--accent)}
-
-  /* Features */
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.2s}
-  .feat:hover{transform:translateY(-3px);border-color:rgba(91,140,255,.35)}
-  .feat .emoji{font-size:26px}
-  .feat h3{font-size:18px;font-weight:700;margin:14px 0 8px}
-  .feat p{color:var(--muted);font-size:14.5px}
-
-  /* Form / conversion block */
-  .convert{background:linear-gradient(180deg,var(--bg-soft),#0c0d13);border:1px solid var(--line);border-radius:26px;
-    padding:8px;margin-top:18px;overflow:hidden}
-  .convert-inner{display:grid;grid-template-columns:.92fr 1.08fr;gap:8px}
-  .convert-copy{padding:34px 30px}
-  .convert-copy h2{font-size:clamp(26px,3.4vw,36px)}
-
-  /* Soft-cap meter */
-  .cap{margin-top:22px;background:rgba(255,206,92,.06);border:1px solid rgba(255,206,92,.28);border-radius:14px;padding:16px 18px}
-  .cap-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;font-weight:600;color:var(--gold)}
-  .cap-top span:last-child{color:var(--muted);font-weight:500}
-  .bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:10px;overflow:hidden}
-  .bar span{display:block;height:100%;width:44%;border-radius:99px;background:linear-gradient(90deg,var(--gold),#ff9e3d)}
-  .cap-note{font-size:12.5px;color:var(--muted);margin-top:9px}
-
-  .benefits{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:14px}
-  .benefits li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink)}
-  .benefits .ic{background:rgba(25,230,168,.16);color:var(--accent)}
-  .form-card{background:#fff;border-radius:20px;padding:8px 14px;min-height:560px}
-  .form-card iframe{width:100%;border:0}
-  .quote{margin-top:24px;font-size:14.5px;color:var(--muted);font-style:italic;border-left:2px solid var(--brand);padding-left:14px}
-
-  /* Spreds / invest band */
-  .invest{background:linear-gradient(135deg,rgba(255,206,92,.10),rgba(155,107,255,.10));border:1px solid rgba(255,206,92,.25);
-    border-radius:26px;padding:42px;display:grid;grid-template-columns:1.3fr .9fr;gap:30px;align-items:center;margin-top:18px}
-  .invest .eyebrow{color:var(--gold)}
-  .invest h2{font-size:clamp(26px,3.6vw,38px)}
-  .invest p{color:var(--muted);margin-top:14px;font-size:16px}
-  .invest .stat{display:flex;gap:26px;margin-top:22px;flex-wrap:wrap}
-  .invest .stat div b{font-family:'Plus Jakarta Sans';font-weight:800;font-size:30px;display:block;color:var(--ink)}
-  .invest .stat div span{font-size:13px;color:var(--muted)}
-  .invest-cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-  .invest-fine{font-size:12px;color:var(--muted);max-width:34ch}
-
-  /* Footer */
-  footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:13.5px}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;width:100%}
-  footer a:hover{color:var(--ink)}
-
-  .anchor{scroll-margin-top:30px}
-  [data-i18n]{transition:opacity .15s ease}
-
-  @media(max-width:860px){
-    .split{grid-template-columns:1fr}
-    .grid3{grid-template-columns:1fr}
-    .convert-inner{grid-template-columns:1fr}
-    .convert-copy{padding:26px 22px 6px}
-    .invest{grid-template-columns:1fr;padding:30px}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/playbook.css"/>
 </head>
 <body>
-<div class="glow"></div>
 
-<div class="wrap">
-  <nav>
-    <div class="brand">hrmano</div>
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language">
-        <button data-lang="fr" class="active">FR</button>
-        <button data-lang="en">EN</button>
+<nav class="site"><div class="wrap bar">
+  <a class="brand" href="./"><span class="glyph">7</span> The Hackathon Playbook</a>
+  <div class="navlinks">
+    <a href="manual.html">Manual</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="templates.html">Templates</a>
+    <a href="agent-pack.html" class="cta">Install the agent →</a>
+  </div>
+</div></nav>
+
+<!-- ================= HERO ================= -->
+<header class="mesh"><div class="wrap hero">
+  <span class="overline">Built from 35+ playbooks &amp; research papers</span>
+  <h1>Turn a room of <span class="serif">consumers</span> into a room of <span class="serif">builders</span>.</h1>
+  <p class="sub">The operating system for running exceptional hackathons — on a campus, in a company,
+  at a school, or around your kitchen table. Everything MLH, Facebook, Atlassian, NASA and the
+  research literature learned the hard way, compressed into a 10-minute onboarding.</p>
+  <div class="actions">
+    <a class="btn primary" href="#start">Start onboarding <span class="arr">→</span></a>
+    <a class="btn ghost" href="agent-pack.html">One prompt, full event scaffold</a>
+  </div>
+  <div class="statstrip">
+    <div class="stat"><div class="n">35<em>+</em></div><div class="l">playbooks &amp; papers distilled</div></div>
+    <div class="stat"><div class="n">15</div><div class="l">rules that carry the whole event</div></div>
+    <div class="stat"><div class="n">10 <em>min</em></div><div class="l">to a fully planned event</div></div>
+    <div class="stat"><div class="n">1 <em>prompt</em></div><div class="l">the agent scaffolds the rest</div></div>
+  </div>
+</div></header>
+
+<!-- ================= PATH CHOOSER ================= -->
+<section class="block" id="start"><div class="wrap">
+  <div class="sechead">
+    <span class="overline">Step 1 · Who are you?</span>
+    <h2>Three doors. Pick <span class="serif">yours</span>.</h2>
+    <p>The single biggest research finding: hackathons fail through goal-incoherence, not bad logistics. So we start with you, not with the checklist.</p>
+  </div>
+  <div class="grid c3">
+    <a class="path" href="#quiz">
+      <span class="emoji">🌱</span>
+      <h3>My first event</h3>
+      <p>You've never organised one. Good — the format was invented for you. Take the 90-second format picker, then run the 15 rules below. That's genuinely all of it.</p>
+      <span class="go">Pick my format →</span>
+    </a>
+    <a class="path" href="manual.html">
+      <span class="emoji">⚡</span>
+      <h3>I've run a few</h3>
+      <p>Skip the onboarding. Go straight to the Field Manual — the psychology chapter, the judging math, and the afterlife design are where veterans find the edge.</p>
+      <span class="go">Open the manual →</span>
+    </a>
+    <a class="path" href="manual.html#ch8">
+      <span class="emoji">🏛️</span>
+      <h3>Bringing it to my org</h3>
+      <p>Company, school, city, or family retreat. The core is portable: problem + team + deadline + witnessed demo. Chapter 8 shows the transplant surgery.</p>
+      <span class="go">Beyond tech →</span>
+    </a>
+  </div>
+</div></section>
+
+<!-- ================= FORMAT PICKER ================= -->
+<section class="block tight" id="quiz"><div class="wrap">
+  <div class="sechead">
+    <span class="overline">Step 2 · 90 seconds</span>
+    <h2>The format <span class="serif">picker</span></h2>
+    <p>Answer three questions. Every design decision — entry, teams, judging, prizes, length — inherits from your answers.</p>
+  </div>
+  <div class="quiz">
+    <div class="q" data-q="goal">
+      <div class="ql"><span class="chip7">1</span> What must be true the Monday after?</div>
+      <div class="pills">
+        <span class="pill" data-v="convert">First-timers became builders</span>
+        <span class="pill" data-v="ship">Real prototypes shipped</span>
+        <span class="pill" data-v="scene">The scene has new energy</span>
+        <span class="pill" data-v="org">My company changed</span>
+        <span class="pill" data-v="civic">A community problem moved</span>
       </div>
-      <a href="#start" class="nav-cta" data-i18n="nav_cta">Accès anticipé →</a>
     </div>
-  </nav>
-
-  <header>
-    <span class="pill"><span class="pulse"></span><span data-i18n="hero_pill">Accès anticipé · places fondateurs à tarif réduit</span></span>
-    <h1 data-i18n="hero_h1">Sache enfin ce que tu <span class="hl">gagnes vraiment.</span></h1>
-    <p class="sub" data-i18n="hero_sub">
-      hrmano est le <strong>cockpit de rémunération</strong> des indépendants en société.
-      Vois clairement ce que tu gagnes et ce que tu paies en taxes —
-      <strong>sans secrétariat social hors de prix</strong>, sans tickets qui traînent 4 semaines.
-    </p>
-    <div class="cta-row">
-      <a href="#start" class="btn btn-primary" data-i18n="hero_btn1">Rejoindre l'accès anticipé
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#start" class="btn btn-ghost" data-i18n="hero_btn2">Réserver un appel de 15 min</a>
-    </div>
-    <div class="reassure">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#19e6a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span data-i18n="hero_reassure">Gratuit · Aucune carte · Tu laisses ton mail, on te montre tes chiffres.</span>
-    </div>
-
-    <div class="trust">
-      <span data-i18n="trust_lead">Construit avec et pour l'écosystème startup belge.</span>
-    </div>
-  </header>
-</div>
-
-<!-- PAIN vs GAIN -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow" data-i18n="pain_eyebrow">Le vrai problème</div>
-    <h2 data-i18n="pain_h2">Tu diriges. Mais tu ne sais pas vraiment combien tu te paies.</h2>
-    <p class="lead" data-i18n="pain_lead">Le secrétariat social classique a été pensé pour les comptables, pas pour les fondateurs. Toi, tu veux une réponse claire, maintenant.</p>
-
-    <div class="split">
-      <div class="panel old">
-        <h3 data-i18n="old_h3">Le secrétariat social classique</h3>
-        <ul>
-          <li><span class="ic">✕</span><span data-i18n="old_1">Des emails-tickets qui mettent 4 semaines à revenir.</span></li>
-          <li><span class="ic">✕</span><span data-i18n="old_2">Des factures opaques, des forfaits qui gonflent.</span></li>
-          <li><span class="ic">✕</span><span data-i18n="old_3">Aucune visibilité sur ce que tu touches réellement, net.</span></li>
-          <li><span class="ic">✕</span><span data-i18n="old_4">Des dizaines de variables fiscales belges que personne ne t'explique.</span></li>
-          <li><span class="ic">✕</span><span data-i18n="old_5">De la paperasse pensée pour un autre siècle.</span></li>
-        </ul>
+    <div class="q" data-q="who">
+      <div class="ql"><span class="chip7 moss">2</span> Who's in the room?</div>
+      <div class="pills">
+        <span class="pill" data-v="students">Students</span>
+        <span class="pill" data-v="builders">Working builders</span>
+        <span class="pill" data-v="employees">Employees</span>
+        <span class="pill" data-v="mixed">Everyone — coders optional</span>
       </div>
-      <div class="panel new">
-        <h3 data-i18n="new_h3">Avec hrmano</h3>
-        <ul>
-          <li><span class="ic">✓</span><span data-i18n="new_1">Une vue claire et instantanée de ce que tu gagnes et paies.</span></li>
-          <li><span class="ic">✓</span><span data-i18n="new_2">Des chiffres compréhensibles, pas du jargon de fiche de paie.</span></li>
-          <li><span class="ic">✓</span><span data-i18n="new_3">Optimise ta rémunération avant de signer, pas après.</span></li>
-          <li><span class="ic">✓</span><span data-i18n="new_4">Pensé pour les fondateurs tech qui veulent aller vite.</span></li>
-          <li><span class="ic">✓</span><span data-i18n="new_5">Tu gardes ton focus sur ton business, pas sur l'admin.</span></li>
-        </ul>
+    </div>
+    <div class="q" data-q="time">
+      <div class="ql"><span class="chip7 gold">3</span> How much runway do you have?</div>
+      <div class="pills">
+        <span class="pill" data-v="weeks">~6 weeks</span>
+        <span class="pill" data-v="months">3–5 months</span>
+        <span class="pill" data-v="standing">This should recur forever</span>
       </div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+  </div>
+</div></section>
+
+<!-- ================= 10-MIN PATH ================= -->
+<section class="block" id="rules"><div class="wrap">
+  <div class="sechead">
+    <span class="overline">Step 3 · The 10-minute path</span>
+    <h2>Fifteen rules. Each one is the consensus of the <span class="serif">entire</span> source base.</h2>
+    <p>Check them off as you internalise them — your progress is saved in this browser. Then open the <a href="timeline.html" style="color:var(--blurple);font-weight:600">Master Timeline</a> and you're operational.</p>
+  </div>
+  <div class="progresswrap"><div class="progressbar"><i id="pbar"></i></div>
+    <div class="progresslabel" id="plabel">0 / 15 — the room is waiting</div></div>
+  <div id="checklist"></div>
+</div></section>
+
+<!-- ================= THESIS BAND ================= -->
+<section class="block tight"><div class="wrap">
+  <div class="band"><div class="duo">
+    <div>
+      <blockquote>“Hackathons sometimes produce technologies, and they always produce subjects.”
+        <span class="attr">— Lilly Irani, Science, Technology &amp; Human Values</span></blockquote>
+    </div>
+    <div>
+      <div class="bignum">~9% <small>of “hackathon code” is written at the hackathon</small></div>
+      <div class="bignum" style="color:var(--flare)">~7% <small>of projects survive six months — by default</small></div>
+      <p style="margin-top:14px">Judged as software factories, hackathons are a scam. Judged as
+      <strong style="color:#fff">identity factories</strong>, they're the best deal in civilization:
+      deadline + strangers + witnessed demo = a person who has publicly enacted “I am someone who
+      builds.” Design for the conversion; make shipping the designed add-on — done right, survival
+      jumps to 25–40%.</p>
+    </div>
+  </div></div>
+</div></section>
+
+<!-- ================= CHEAT NUMBERS ================= -->
+<section class="block" id="numbers"><div class="wrap">
+  <div class="sechead">
+    <span class="overline">The cheat numbers</span>
+    <h2>Numbers that survive contact with <span class="serif">reality</span></h2>
+    <p>Screenshot this. Every value is sourced in the <a href="manual.html#appendix" style="color:var(--blurple);font-weight:600">manual's appendix</a>.</p>
+  </div>
+  <div class="grid c4">
+    <div class="numcard"><div class="big">200%</div><div class="rule">Register double your capacity</div><div class="why">Free events no-show at ~50%</div></div>
+    <div class="numcard" data-tone="navy"><div class="big">⌈P×3×4′⁄T⌉</div><div class="rule">The judge formula</div><div class="why">3 judges, 4 min per project; P ≈ attendees ÷ 4</div></div>
+    <div class="numcard" data-tone="clay"><div class="big">~25%</div><div class="rule">Of scope actually ships</div><div class="why">Checkpoint at half-time; force the cut early</div></div>
+    <div class="numcard" data-tone="moss"><div class="big">2–3 min</div><div class="rule">Demos. Live. No slides.</div><div class="why">Hard-cut timer; everyone demos</div></div>
+    <div class="numcard" data-tone="moss"><div class="big">3–4</div><div class="rule">People per team, cap 5</div><div class="why">Formed before hour zero — or lose 3 hours</div></div>
+    <div class="numcard"><div class="big">≤25%</div><div class="rule">Of budget from any one sponsor</div><div class="why">3 tiers, prize parity, invoice on yes</div></div>
+    <div class="numcard" data-tone="clay"><div class="big">0</div><div class="rule">Links in a first sponsor email</div><div class="why">Spam filters. Plain text. 3 follow-ups.</div></div>
+    <div class="numcard" data-tone="navy"><div class="big">$8–10</div><div class="rule">Per person per meal</div><div class="why">Never pizza-only; claims decay 90%→30%</div></div>
+    <div class="numcard"><div class="big">2 wks</div><div class="rule">What winning buys you</div><div class="why">A written 30-day plan buys months</div></div>
+    <div class="numcard" data-tone="moss"><div class="big">80–85%</div><div class="rule">Of a slot you may plan</div><div class="why">Slack time is a design requirement</div></div>
+    <div class="numcard" data-tone="clay"><div class="big">40%</div><div class="rule">Of your effort the venue can eat</div><div class="why">3 warm pitches/week, start 5 months out</div></div>
+    <div class="numcard" data-tone="navy"><div class="big">≥4</div><div class="rule">Prizes, priced in access</div><div class="why">Dinner with founders &gt; an iPad</div></div>
+  </div>
+</div></section>
+
+<!-- ================= ARTIFACTS ================= -->
+<section class="block" id="artifacts"><div class="wrap">
+  <div class="sechead">
+    <span class="overline">The toolkit</span>
+    <h2>Three artifacts, one <span class="serif">operating system</span></h2>
+  </div>
+  <div class="grid c3">
+    <a class="card link" href="manual.html">
+      <span class="chip7">📖</span>
+      <h3 style="margin-top:14px">The Field Manual</h3>
+      <p>The doctrine. Eight chapters: format picker, the psychology, money, the room, judging, the afterlife, and taking hackathons beyond tech. 10-minute fast path up top.</p>
+    </a>
+    <a class="card link" href="timeline.html">
+      <span class="chip7 moss">🗓️</span>
+      <h3 style="margin-top:14px">The Master Timeline</h3>
+      <p>Interactive countdown. Type your event date — every deadline becomes a real date, checkable, saved in your browser. Two tracks: flagship weekend &amp; 3–12h sprint.</p>
+    </a>
+    <a class="card link" href="agent-pack.html">
+      <span class="chip7 gold">🤖</span>
+      <h3 style="margin-top:14px">The Agent Pack</h3>
+      <p>A Claude Code skill pack. <code style="font-family:var(--font-mono);font-size:13px">/scaffold</code> interviews you — ten questions — then writes your entire event as files: timeline, budget, sponsors, run of show, judging, comms.</p>
+    </a>
+  </div>
+  <div style="margin-top:18px" class="grid c2">
+    <a class="card link" href="templates.html">
+      <h3>The swipe file</h3>
+      <p>Copy-paste artifacts with one click: the sponsor first-touch email, the 2-page prospectus, the judge briefing, the 15-minute opening ceremony script, the next-30-days card.</p>
+    </a>
+    <div class="card">
+      <h3>Take everything with you</h3>
+      <p style="margin-bottom:16px">The full playbook — manual, timeline, research insight bank, agent pack — as plain markdown. Yours.</p>
+      <a class="btn dark" href="downloads/hackathon-playbook-full.zip" download>Download the playbook <span class="arr">↓</span></a>
     </div>
   </div>
-</section>
+</div></section>
 
-<!-- FEATURES -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow" data-i18n="feat_eyebrow">Ce que tu obtiens</div>
-    <h2 data-i18n="feat_h2">Un cockpit, pas un secrétariat.</h2>
-    <div class="grid3">
-      <div class="feat">
-        <div class="emoji">🎯</div>
-        <h3 data-i18n="feat1_h">Ton net, en clair</h3>
-        <p data-i18n="feat1_p">Salaire, dividendes, frais, cotisations. Une seule vue qui répond à « combien je touche vraiment ? ».</p>
-      </div>
-      <div class="feat">
-        <div class="emoji">⚡</div>
-        <h3 data-i18n="feat2_h">Décide en minutes</h3>
-        <p data-i18n="feat2_p">Simule un changement de rémunération et vois l'impact fiscal direct. Plus d'attente, plus de tickets.</p>
-      </div>
-      <div class="feat">
-        <div class="emoji">🇧🇪</div>
-        <h3 data-i18n="feat3_h">Calibré pour la Belgique</h3>
-        <p data-i18n="feat3_p">Les dizaines de variables de l'indépendant en société, gérées pour toi. Tu restes au courant, jamais perdu.</p>
-      </div>
-    </div>
+<footer class="site"><div class="wrap cols">
+  <div>
+    <div class="fbrand">The Hackathon Playbook</div>
+    Distilled from MLH, hackathon.guide, Hack Club, Devpost, GitHub, Microsoft Garage,<br/>
+    Atlassian ShipIt, Spotify Hack Week, Facebook, McKinsey, GV, NASA Space Apps,<br/>
+    Code for America, the CMU research corpus, Cerebral Valley, lablab.ai and more.
   </div>
-</section>
-
-<!-- CONVERSION -->
-<section class="anchor" id="start">
-  <div class="wrap">
-    <div class="convert">
-      <div class="convert-inner">
-        <div class="convert-copy">
-          <div class="eyebrow" data-i18n="conv_eyebrow">Accès anticipé</div>
-          <h2 data-i18n="conv_h2">Laisse ton mail. Découvre tes chiffres.</h2>
-
-          <div class="cap">
-            <div class="cap-top">
-              <span data-i18n="cap_title">Places fondateurs à tarif réduit</span>
-              <span><b style="color:var(--gold)">44</b> / 100</span>
-            </div>
-            <div class="bar"><span style="width:44%"></span></div>
-            <div class="cap-note" data-i18n="cap_note">Les 100 premiers entrepreneurs verrouillent l'abonnement fondateur à tarif réduit, à vie. Ensuite, plein tarif.</div>
-          </div>
-
-          <ul class="benefits">
-            <li><span class="ic">✓</span><span data-i18n="conv_b1">Tu rejoins la liste d'accès anticipé et la vague des fondateurs.</span></li>
-            <li><span class="ic">✓</span><span data-i18n="conv_b2">On te montre, sur ta situation, ce que tu gagnes et paies vraiment.</span></li>
-            <li><span class="ic">✓</span><span data-i18n="conv_b3">Optionnel : un appel de 15 min pour prendre la température, entre fondateurs.</span></li>
-          </ul>
-          <p class="quote" data-i18n="conv_quote">« Je t'aide à te payer, à travers les dizaines de variables de la Belgique. » — On parle le même langage, pas celui des comptables.</p>
-        </div>
-        <div class="form-card">
-          <iframe
-            data-tally-src="https://tally.so/embed/zxdAkE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-            loading="lazy" width="100%" height="560" frameborder="0" marginheight="0" marginwidth="0"
-            title="Accès anticipé hrmano"></iframe>
-        </div>
-      </div>
-    </div>
+  <div style="text-align:right">
+    <a href="manual.html">Manual</a> · <a href="timeline.html">Timeline</a> ·
+    <a href="templates.html">Templates</a> · <a href="agent-pack.html">Agent&nbsp;Pack</a><br/>
+    <span style="font-size:12.5px">Made in Brussels · for the organisers who turn 1% into 50%</span>
   </div>
-</section>
+</div></footer>
 
-<!-- SPREDS / INVEST -->
-<section class="anchor" id="invest">
-  <div class="wrap">
-    <div class="invest">
-      <div>
-        <div class="eyebrow" data-i18n="inv_eyebrow">Campagne equity · Live sur Spreds</div>
-        <h2 data-i18n="inv_h2">Tu crois au projet ? Deviens actionnaire.</h2>
-        <p data-i18n="inv_p">Participe au lancement de hrmano via notre campagne de crowdfunding. <strong style="color:var(--ink)">Déduis 45 % du montant</strong> sur ta prochaine fiche fiscale (tax shelter belge) — et ta part prend de la valeur en même temps que hrmano.</p>
-        <div class="stat">
-          <div><b>45%</b><span data-i18n="inv_s1">déduction fiscale</span></div>
-          <div><b>1 000</b><span data-i18n="inv_s2">entrepreneurs visés</span></div>
-          <div><b>Live</b><span data-i18n="inv_s3">campagne ouverte</span></div>
-        </div>
-      </div>
-      <div class="invest-cta">
-        <a href="https://www.spreds.com/fr/compartments/10909-hrmano" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="inv_btn">Investir via Spreds →</a>
-        <p class="invest-fine" data-i18n="inv_fine">Investir comporte un risque de perte. La déduction fiscale dépend de ta situation personnelle.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="brand" style="font-size:16px">hrmano</div>
-    <div data-i18n="foot_tag">Le cockpit de rémunération des indépendants en société · Bruxelles 🇧🇪</div>
-    <div><a href="https://www.spreds.com/fr/compartments/10909-hrmano" target="_blank" rel="noopener" data-i18n="foot_link">Investir via Spreds →</a></div>
-  </div>
-</footer>
-
-<!-- i18n -->
 <script>
-const I18N = {
-  en: {
-    nav_cta: "Early access →",
-    hero_pill: "Early access · discounted founder seats",
-    hero_h1: 'Finally know what you <span class="hl">actually earn.</span>',
-    hero_sub: 'hrmano is the <strong>remuneration cockpit</strong> for incorporated freelancers. See clearly what you earn and what you pay in tax — <strong>without an expensive social secretariat</strong>, without tickets that drag on for 4 weeks.',
-    hero_btn1: 'Join early access <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    hero_btn2: "Book a 15-min call",
-    hero_reassure: "Free · No card · Leave your email, we show you your numbers.",
-    trust_lead: "Built with and for the Belgian startup ecosystem.",
-    pain_eyebrow: "The real problem",
-    pain_h2: "You run the company. But you don't really know what you pay yourself.",
-    pain_lead: "The classic social secretariat was built for accountants, not for founders. You want a clear answer, now.",
-    old_h3: "The classic social secretariat",
-    old_1: "Email-tickets that take 4 weeks to come back.",
-    old_2: "Opaque invoices, packages that keep inflating.",
-    old_3: "Zero visibility on what you actually take home, net.",
-    old_4: "Dozens of Belgian tax variables nobody explains to you.",
-    old_5: "Paperwork designed for another century.",
-    new_h3: "With hrmano",
-    new_1: "A clear, instant view of what you earn and pay.",
-    new_2: "Numbers you understand — not payslip jargon.",
-    new_3: "Optimise your pay before you sign, not after.",
-    new_4: "Built for tech founders who want to move fast.",
-    new_5: "Keep your focus on your business, not the admin.",
-    feat_eyebrow: "What you get",
-    feat_h2: "A cockpit, not a secretariat.",
-    feat1_h: "Your net, in clear terms",
-    feat1_p: "Salary, dividends, expenses, contributions. One view that answers “how much do I actually take home?”",
-    feat2_h: "Decide in minutes",
-    feat2_p: "Simulate a change in pay and see the tax impact instantly. No more waiting, no more tickets.",
-    feat3_h: "Calibrated for Belgium",
-    feat3_p: "The dozens of variables of an incorporated freelancer, handled for you. You stay informed, never lost.",
-    conv_eyebrow: "Early access",
-    conv_h2: "Leave your email. Discover your numbers.",
-    cap_title: "Discounted founder seats",
-    cap_note: "The first 100 entrepreneurs lock in the founder rate for life. After that, full price.",
-    conv_b1: "You join the early-access list and the founders' wave.",
-    conv_b2: "We show you, on your situation, what you really earn and pay.",
-    conv_b3: "Optional: a 15-min call to take the temperature, founder to founder.",
-    conv_quote: "“I help you pay yourself, through Belgium's dozens of variables.” — We speak your language, not the accountants'.",
-    inv_eyebrow: "Equity campaign · Live on Spreds",
-    inv_h2: "Believe in it? Become a shareholder.",
-    inv_p: 'Back the launch of hrmano through our crowdfunding campaign. <strong style="color:var(--ink)">Deduct 45% of the amount</strong> on your next tax return (Belgian tax shelter) — and your stake grows in value alongside hrmano.',
-    inv_s1: "tax deduction",
-    inv_s2: "entrepreneurs targeted",
-    inv_s3: "campaign open",
-    inv_btn: "Invest via Spreds →",
-    inv_fine: "Investing carries a risk of loss. The tax deduction depends on your personal situation.",
-    foot_tag: "The remuneration cockpit for incorporated freelancers · Brussels 🇧🇪",
-    foot_link: "Invest via Spreds →"
-  }
+/* ---------- format picker ---------- */
+const FORMATS = {
+  convert: {name:'The Beginner-Tracked Community Hack', why:'Your goal is conversion, so stranger teams, humane hours and a witnessed demo for every team do the work.',
+    tags:['1 day, sleep-compatible','Open entry, actively recruited','Organizer-mixed teams','Peer voting or many small awards','Symbolic prizes'],
+    note:'Assign one human whose only job is walking first-timers to a first contribution. Theme is a demographic instrument — pick one that makes outsiders\' knowledge the scarce resource.'},
+  ship: {name:'The Curated Build Weekend', why:'Prototypes need skill-fit teams and follow-through, not volume.',
+    tags:['24–48h, no forced all-nighter','Application-gated','Pre-formed teams of 3–4','Expert panel, shippability weighted','Access prizes + follow-through funding'],
+    note:'Before demos, every team writes a next-30-days plan — winning predicts two weeks; written intention predicts months.'},
+  scene: {name:'The Compression Event', why:'Elite energy comes from density and scarcity, not duration. AI tooling killed the all-nighter.',
+    tags:['3–12 hours','Brutal curation — publicize the funnel','Teams exist before hour zero','Demo-or-die to named judges','Prizes = access: dinners, early access, credits'],
+    note:'Publish the judge lineup before applications close — people apply to be seen by specific humans.'},
+  org: {name:'The Internal ShipIt', why:'Companies need a pipeline instrument wearing a party costume.',
+    tags:['24h–1 week, quarterly cadence','Everyone hacks — even the chefs','Shipment orders posted before','Async peer voting + exec forum at +2 weeks','Prize = pitch time with the CEO'],
+    note:'Demos to executives happen 1–2 weeks AFTER the build (Facebook\'s Prototype Forum) — polished pitches to people who can green-light, not 3am slideware.'},
+  civic: {name:'The Recurring Civic Hack', why:'Community problems outlive weekends — the container matters more than the event.',
+    tags:['Evenings, forever + one annual day','Open — “you don\'t need to code”','Teams around expert-defined problems','A real problem-owner per team','The prize is the problem moving'],
+    note:'Weeks of expert problem-definition before the event separate useful hacks from naïve demos. Wire the sprint into slow institutions.'}
 };
-
-const els = document.querySelectorAll('[data-i18n]');
-// capture original FR
-const FR = {};
-els.forEach(el => FR[el.dataset.i18n] = el.innerHTML);
-
-function setLang(lang){
-  const dict = lang === 'en' ? I18N.en : FR;
-  els.forEach(el => {
-    const v = lang === 'en' ? I18N.en[el.dataset.i18n] : FR[el.dataset.i18n];
-    if (v != null) el.innerHTML = v;
-  });
-  document.documentElement.lang = lang;
-  document.querySelectorAll('.lang button').forEach(b =>
-    b.classList.toggle('active', b.dataset.lang === lang));
-  try { localStorage.setItem('hrmano_lang', lang); } catch(e){}
+const answers = {};
+document.querySelectorAll('.q').forEach(q => {
+  q.querySelectorAll('.pill').forEach(p => p.addEventListener('click', () => {
+    q.querySelectorAll('.pill').forEach(x => x.classList.remove('on'));
+    p.classList.add('on');
+    answers[q.dataset.q] = p.dataset.v;
+    render();
+  }));
+});
+function render(){
+  if(!answers.goal) return;
+  let f = FORMATS[answers.goal];
+  if(answers.goal==='ship' && answers.who==='mixed') f = FORMATS.convert;
+  if(answers.goal==='scene' && answers.time==='months') f = {...f, tags:[...f.tags.slice(0,-1),'With 3–5 months: make it a 100-cap flagship with a published acceptance funnel']};
+  const extra = answers.time==='standing'
+    ? '<br/><b>Recurring?</b> Perfect — announce the next date from the closing stage, every time. The event must live inside a container.' : '';
+  const v = document.getElementById('verdict');
+  v.classList.add('show');
+  v.innerHTML = `<h3>Run: <span class="serif">${f.name}</span></h3>
+    <p style="color:var(--muted);font-size:15px">${f.why}</p>
+    <div class="spec">${f.tags.map((t,i)=>`<span class="tag${i===0?' hl':''}">${t}</span>`).join('')}</div>
+    <p style="font-size:14.5px">💡 ${f.note}${extra}</p>
+    <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn primary" href="timeline.html${answers.time==='weeks'?'?track=b':''}">Build my timeline <span class="arr">→</span></a>
+      <a class="btn ghost" href="agent-pack.html">Let the agent scaffold it</a>
+    </div>`;
 }
 
-document.querySelectorAll('.lang button').forEach(b =>
-  b.addEventListener('click', () => setLang(b.dataset.lang)));
-
-// init: stored pref, else browser language, else FR
-const stored = (()=>{try{return localStorage.getItem('hrmano_lang')}catch(e){return null}})();
-setLang(stored || ((navigator.language||'').toLowerCase().startsWith('en') ? 'en' : 'fr'));
-</script>
-
-<!-- Tally embed loader -->
-<script>
-var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+/* ---------- 15-rule checklist ---------- */
+const RULES = [
+ ['Pick ONE goal before anything else','Conversion, prototypes, community, recruiting, or launch. Every failure in the literature is goal-incoherence wearing a logistics costume.'],
+ ['Venue first','It can eat 40% of your effort. Warm intros, ~3 pitches a week, a full month from “yes” to signed logistics.'],
+ ['Register 200% of capacity','Free events no-show at ~50%.'],
+ ['One deadline for all paperwork','Waivers, forms, teams — one date. Redundant channels: email + chat + SMS.'],
+ ['Sponsors are a sales pipeline','First email: zero links. Call, same-day proposal, 3 follow-ups, invoice on yes. Top tier ≤25% of budget. Prize parity.'],
+ ['Pre-form teams before hour zero','3–4 people, cap 5. The most-cited failure: three hours lost to team-finding.'],
+ ['Assign a newcomer shepherd','One human whose only job is walking first-timers to a first contribution. Imposter syndrome is an ops problem.'],
+ ['Protect long build blocks','Workshops and mentors at fixed windows, never rolling interruptions. Mentors circulate on schedule — first-timers don\'t ask.'],
+ ['Open with meaning, not logistics','Ten minutes of why this matters, five of rules. One goal: “working demo, live, no slides, at 18:00.”'],
+ ['Feed people properly','$8–10/meal, never pizza-only, ordered down the decay curve. Keep $1–3k contingency. Encourage sleep.'],
+ ['Judge with math','1 project per 4 attendees. Judges = ⌈(P×3×4′)/window⌉. Science fair. Stack-rank top 3 (3/2/1). Publish the rubric at kickoff.'],
+ ['Demo or die','Every team, live, 2–3 minutes, hard cut, no slides. Under ~200 people, everyone demos to everyone.'],
+ ['≥4 prizes, priced in access','Dinner with a founder, pitch time with an exec, early access, credits. Cash buys mercenaries; access builds believers.'],
+ ['The next-30-days plan','Before demos, every team writes one. Written intention is the strongest designable predictor of survival. Announce the follow-up container from the stage.'],
+ ['Close in two phases','Inward: winner stories. Outward: next date + community channel. Then within a week: surveys, sponsor report, retro, recap.']
+];
+const KEY='hp_rules_v1';
+let done = JSON.parse(localStorage.getItem(KEY)||'[]');
+const list = document.getElementById('checklist');
+RULES.forEach((r,i)=>{
+  const el = document.createElement('div');
+  el.className = 'check'+(done.includes(i)?' done':'');
+  el.innerHTML = `<span class="chip7" style="width:30px;height:30px;font-size:13px">${i+1}</span>
+    <div><div class="t">${r[0]}</div><div class="d">${r[1]}</div></div>
+    <div class="box" style="margin-left:auto">✓</div>`;
+  el.addEventListener('click',()=>{
+    if(done.includes(i)) done = done.filter(x=>x!==i); else done.push(i);
+    localStorage.setItem(KEY, JSON.stringify(done));
+    el.classList.toggle('done'); prog();
+  });
+  list.appendChild(el);
+});
+function prog(){
+  const p = Math.round(done.length/RULES.length*100);
+  document.getElementById('pbar').style.width = p+'%';
+  document.getElementById('plabel').textContent =
+    done.length===RULES.length ? '15 / 15 — you are operational. Open the timeline.' :
+    `${done.length} / 15 — ${done.length===0?'the room is waiting':'keep going'}`;
+}
+prog();
 </script>
 </body>
 </html>

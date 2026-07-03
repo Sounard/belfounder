@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Agent Pack — The Hackathon Playbook</title>
+<meta name="description" content="A Claude Code skill pack that turns any first-timer into a world-class hackathon organiser: one prompt, ten questions, your entire event generated as files."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/playbook.css"/>
+</head>
+<body>
+
+<nav class="site"><div class="wrap bar">
+  <a class="brand" href="./"><span class="glyph">7</span> The Hackathon Playbook</a>
+  <div class="navlinks">
+    <a href="manual.html">Manual</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="templates.html">Templates</a>
+    <a href="agent-pack.html" class="cta active">Install the agent →</a>
+  </div>
+</div></nav>
+
+<header class="mesh"><div class="wrap hero" style="padding:80px 0 56px">
+  <span class="overline">The Agent Pack · Claude Code</span>
+  <h1 style="font-size:clamp(36px,5.2vw,58px)">One prompt. <span class="serif">Ten minutes.</span><br/>A fully planned event.</h1>
+  <p class="sub">A Claude Code skill pack carrying the distilled knowledge of 35+ playbooks. It interviews
+  you — ten taste-level questions — then writes your entire event as files: dated timeline, budget,
+  sponsor prospectus, run of show, judging plan, comms sequence. It enforces the field-tested numbers
+  and warns you before every documented mistake.</p>
+  <div class="actions">
+    <a class="btn primary" href="downloads/hackathon-agent-pack.zip" download>Download the pack <span class="arr">↓</span></a>
+    <a class="btn ghost" href="downloads/hackathon-playbook-full.zip" download>Pack + full playbook ↓</a>
+  </div>
+</div></header>
+
+<section class="block tight"><div class="wrap">
+  <div class="sechead"><span class="overline">Fresh install</span>
+  <h2>Three commands to <span class="serif">operational</span></h2></div>
+  <div class="grid c2" style="align-items:start">
+    <div class="term"><div class="thead"><i></i><i></i><i></i></div><pre>
+<span class="c"># 1 · unpack anywhere</span>
+unzip hackathon-agent-pack.zip
+cd hackathon-agent-pack
+
+<span class="c"># 2 · start Claude Code here</span>
+<span class="b">claude</span>
+
+<span class="c"># 3 · the one prompt</span>
+<span class="g">/scaffold</span>
+
+<span class="c"># → 10 questions later:</span>
+<span class="y">event/</span>
+├── 00-BRIEF.md          <span class="c">goal + decisions that follow</span>
+├── 01-TIMELINE.md       <span class="c">your dates, owners assigned</span>
+├── 02-BUDGET.md         <span class="c">benchmarked line items</span>
+├── 03-SPONSORS.md       <span class="c">prospectus + pipeline CRM</span>
+├── 04-RUN-OF-SHOW.md    <span class="c">minute-by-minute</span>
+├── 05-JUDGING.md        <span class="c">judge math + rubric</span>
+├── 06-COMMS.md          <span class="c">every email, drafted, dated</span>
+└── 07-DEBRIEF.md        <span class="c">surveys + sponsor report</span></pre></div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><h3>Why it doesn't hallucinate your event into a ditch</h3>
+      <p>The pack ships a <code style="font-family:var(--font-mono);font-size:13px">CLAUDE.md</code> doctrine
+      file with the load-bearing numbers baked in — 200% overbooking, the judge formula, prize parity,
+      the five killer deadlines. Override anything: it complies, and writes a
+      <em>⚠ Deviation</em> note with the documented risk into the generated file.</p></div>
+      <div class="card"><h3>Prerequisites</h3>
+      <p><a href="https://claude.com/claude-code" style="color:var(--blurple);font-weight:600">Claude Code</a>
+      installed (<code style="font-family:var(--font-mono);font-size:13px">npm install -g @anthropic-ai/claude-code</code>).
+      No repo, no build, no config — the skills auto-load from the folder.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block tight"><div class="wrap">
+  <div class="sechead"><span class="overline">The skills</span>
+  <h2>Six specialists in your <span class="serif">terminal</span></h2></div>
+  <div class="grid c3">
+    <div class="card"><span class="chip7">🎬</span><h3 style="margin-top:12px">/scaffold</h3>
+      <p>The flagship. Ten-question interview → the complete <code style="font-family:var(--font-mono);font-size:12.5px">event/</code> directory, dated to your calendar, with the three next physical actions.</p></div>
+    <div class="card"><span class="chip7 moss">💶</span><h3 style="margin-top:12px">/sponsors</h3>
+      <p>Prospectus, target list matched to your theme, personalized outreach emails, a pipeline CRM that lists every follow-up due — and the 48-hour post-event report.</p></div>
+    <div class="card"><span class="chip7 gold">🗓</span><h3 style="margin-top:12px">/run-of-show</h3>
+      <p>Minute-by-minute schedule with an owner per block: threshold, 15-min opening, protected build blocks, checkpoint, demos, double close.</p></div>
+    <div class="card"><span class="chip7 gold">⚖️</span><h3 style="margin-top:12px">/judging</h3>
+      <p>Computes your judge count, writes the rubric and calibration script, generates scoring sheets — or designs a no-judging format when your goal calls for it.</p></div>
+    <div class="card"><span class="chip7">📣</span><h3 style="margin-top:12px">/comms</h3>
+      <p>The full attendee sequence — acceptance to recap, ten messages, drafted and dated, with the ONE consolidated paperwork deadline enforced.</p></div>
+    <div class="card"><span class="chip7 moss">🔁</span><h3 style="margin-top:12px">/debrief</h3>
+      <p>Surveys, the sponsor metrics report, winner-story drafts, retro template, and activation of the follow-up container — the week that decides if your event compounds.</p></div>
+  </div>
+</div></section>
+
+<section class="block tight"><div class="wrap">
+  <div class="band"><div class="duo">
+    <div>
+      <blockquote>Any bachelor student to world-class organiser.<br/>One prompt. Ten minutes.</blockquote>
+      <p class="attr">The pack also ships the five swipe-file templates — sponsor email, prospectus,
+      judge briefing, opening script, next-30-days card — usable standalone, no agent required.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+      <a class="btn primary" href="downloads/hackathon-agent-pack.zip" download>Download the agent pack ↓</a>
+      <a class="btn ghost" style="background:transparent;color:#EAF1F8;border-color:rgba(255,255,255,.3)" href="templates.html">Browse the templates →</a>
+    </div>
+  </div></div>
+</div></section>
+
+<footer class="site"><div class="wrap cols">
+  <div><div class="fbrand">The Hackathon Playbook</div>The pack's brain is the <a href="manual.html">Field Manual</a> — read it once, the agent remembers it forever.</div>
+  <div style="text-align:right"><a href="./">Home</a> · <a href="manual.html">Manual</a> · <a href="timeline.html">Timeline</a> · <a href="templates.html">Templates</a></div>
+</div></footer>
+</body>
+</html>

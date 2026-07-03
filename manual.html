@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Field Manual — The Hackathon Playbook</title>
+<meta name="description" content="The hackathon doctrine: format picker, psychology, money, the room, judging, the afterlife, and taking hackathons beyond tech."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/playbook.css"/>
+</head>
+<body>
+
+<nav class="site"><div class="wrap bar">
+  <a class="brand" href="./"><span class="glyph">7</span> The Hackathon Playbook</a>
+  <div class="navlinks">
+    <a href="manual.html" class="active">Manual</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="templates.html">Templates</a>
+    <a href="agent-pack.html" class="cta">Install the agent →</a>
+  </div>
+</div></nav>
+
+<header class="mesh"><div class="wrap hero" style="padding:72px 0 56px">
+  <span class="overline">The Field Manual</span>
+  <h1 style="font-size:clamp(34px,4.8vw,52px)">The <span class="serif">doctrine</span>.</h1>
+  <p class="sub">For the person who wants to turn a room of consumers into a room of builders —
+  in one weekend, on any budget, anywhere. Built on 35+ playbooks and research papers.</p>
+</div></header>
+
+<section class="block tight"><div class="wrap manual">
+  <aside class="toc">
+    <a href="#thesis">The thesis</a>
+    <a href="#ch1">1 · Pick your weapon</a>
+    <a href="#ch2">2 · The physics</a>
+    <a href="#ch3">3 · The countdown</a>
+    <a href="#ch4">4 · Money</a>
+    <a href="#ch5">5 · The room</a>
+    <a href="#ch6">6 · Judging</a>
+    <a href="#ch7">7 · The afterlife</a>
+    <a href="#ch8">8 · Beyond tech</a>
+    <a href="#appendix">Appendix · The numbers</a>
+  </aside>
+  <article class="prose">
+
+  <h2 id="thesis">The thesis</h2>
+  <p class="lead">Roughly 1% of people build things. The other 99% use things. A hackathon is the
+  cheapest, fastest, most reliable machine ever invented for moving a person from the second group
+  to the first — and the research is blunt about why:</p>
+  <blockquote>“Hackathons sometimes produce technologies, and they always produce subjects.”
+    <span class="attr">— Lilly Irani</span></blockquote>
+  <p>Only ~9% of the code in hackathon repos is written at the hackathon. Only ~7% of projects show
+  a pulse six months later. If you judge hackathons as software factories, they're a scam. Judge
+  them as <strong>identity factories</strong> and they're the best deal in civilization: deadline +
+  strangers + witnessed demo = a person who has publicly enacted "I am someone who builds," which is
+  how identities actually stick.</p>
+  <p>So this manual optimizes for the conversion, and treats shipped projects as a designed add-on
+  (Chapter 7 — because that part <em>is</em> designable; well-designed programs hit 25–40%
+  continuation vs. the 7% baseline).</p>
+  <p>That's also why hackathons belong everywhere, not just CS campuses: companies, schools, city
+  halls, social programs, family weekends. The format's core is portable — <strong>a problem you care
+  about + a team + a hard deadline + a public demo</strong>. "App" can be a service blueprint, a lesson
+  plan, a policy memo, a rebuilt breast pump. Chapter 8.</p>
+  <div class="callout"><b>In a hurry?</b> The 15-rule fast path lives on the
+  <a href="./#rules" style="color:var(--blurple);font-weight:600">home page</a> as an interactive
+  checklist, and the full countdown is the <a href="timeline.html" style="color:var(--blurple);font-weight:600">Master Timeline</a>.</div>
+
+  <h2 id="ch1">Chapter 1 — Pick your weapon</h2>
+  <p>The single biggest research finding: a community-building event and a prototype-producing event
+  should look almost nothing alike. Choose your format from your goal, not from what MLH events look
+  like on YouTube.</p>
+  <table>
+    <tr><th>Your goal</th><th>Format</th><th>Length</th><th>Entry</th><th>Teams</th><th>Judging</th><th>Prizes</th></tr>
+    <tr><td><b>Convert first-timers</b></td><td>Beginner-tracked community hack</td><td>1 day, sleep-compatible</td><td>Open, actively recruited via affinity networks</td><td>Organizer-mixed strangers</td><td>Peer/emoji voting or many small awards</td><td>Symbolic, many categories</td></tr>
+    <tr><td><b>Ship real prototypes</b></td><td>Curated build weekend</td><td>24–48h, no forced all-nighter</td><td>Application-gated</td><td>Pre-formed, skill-fit, 3–4</td><td>Expert panel, shippability weighted</td><td>Access + follow-through funding</td></tr>
+    <tr><td><b>Elite scene energy / launch</b></td><td>AI-era compression event</td><td><b>3–12 hours</b></td><td>Brutal curation, publicized funnel</td><td>Pre-formed</td><td>Demo-or-die to celebrity judges</td><td>Access: dinners, early access, credits</td></tr>
+    <tr><td><b>Change a company</b></td><td>Internal ShipIt / Hack Week</td><td>24h–1 week, quarterly</td><td>Everyone, incl. non-engineers</td><td>Self-formed around posted "shipment orders"</td><td>Async peer voting + exec forum <em>1–2 weeks later</em></td><td>Pitch time with the CEO; funded follow-through</td></tr>
+    <tr><td><b>Civic / social impact</b></td><td>Recurring hack night + annual day</td><td>Evenings, forever</td><td>Open, "you don't need to code"</td><td>Around expert-defined problems with a real problem-owner</td><td>Optional</td><td>The problem getting solved</td></tr>
+    <tr><td><b>Global reach</b></td><td>Federated or virtual cohort</td><td>48h global or 1-week selected</td><td>Local leads / selection</td><td>Matched (assessment-based)</td><td>Multi-stage funnel</td><td>Recognition ladder</td></tr>
+  </table>
+  <h3>Three format truths from the 2023–2026 wave</h3>
+  <ul>
+    <li><b>The all-nighter is dead.</b> It was load-bearing when scaffolding took 20 hours; AI tooling
+    ended that. ElevenLabs shipped 262 projects across 33 cities in <b>3 hours</b>. Sleep deprivation is
+    anti-flow, anti-creativity, and it's the #1 thing that screens out everyone who isn't a 20-year-old
+    with no obligations. If you keep a 48h window, make sleep the default, not the deviation.</li>
+    <li><b>Curate or gate — pick one.</b> Cerebral Valley curates at the door (13,000 → 500; the
+    acceptance rate is the brand). lablab.ai gates at the exit (open entry, but no working URL + video +
+    repo = not judged). Both work. Neither-nor produces the sea of half-finished slideware you've walked
+    past at bad events.</li>
+    <li><b>Simultaneity is a cheat code.</b> 33 cities racing one clock, or one global day with local
+    leads (NASA's model: centralize the hard part — problem design — federate the cheap part). One event,
+    many rooms, one story.</li>
+  </ul>
+
+  <h2 id="ch2">Chapter 2 — The physics</h2>
+  <p>You're not running an event. You're running an <strong>interaction ritual</strong>: synchronized
+  attention + shared mood + a boundary against outsiders → emotional energy, group symbols, and moral
+  commitment. That's the sociology of why a weekend feels life-changing. Your job is to aim that energy
+  at identity formation. The levers:</p>
+  <p><b>Flow.</b> Peak engagement needs three things you can literally schedule: one clear goal (the
+  18:00 demo), immediate feedback (mentors as a <em>workflow</em> — @mentor channel, roaming schedule,
+  mid-point check-in — never hallway luck), and challenge/skill match (tracks and starter templates so
+  beginners aren't drowning and veterans aren't bored).</p>
+  <p><b>Deadline ≠ pressure.</b> Amabile's finding: intense time pressure cuts creativity dramatically
+  <em>unless</em> people feel on a mission and protected from fragmentation. So: mission framing at the
+  opening, and long uninterrupted build blocks. A deadline without meaning is just stress.</p>
+  <p><b>The identity moment is the demo.</b> Standing in front of a room presenting a thing you made is
+  a public, witnessed enactment of "I am a builder" — performance accomplishment, the strongest known
+  source of self-efficacy. This is why every team must demo, why demos are protected at all costs, and
+  why a first-timer's wobbly 90-second demo matters more than the winner announcement.</p>
+  <p><b>Scarcity and status.</b> Getting selected is an achievement people announce. Publicized
+  acceptance rates, visible waitlists, judge lineups announced before applications close, prestige-coded
+  venues. Parker's "generous exclusion": by closing the door, you create the room. Use white-hat drives
+  (meaning, accomplishment) for lasting goodwill and black-hat drives (scarcity, countdown, loss
+  aversion) for urgency — black hat gets them in the door; white hat decides whether they evangelize
+  afterward.</p>
+  <p><b>Prizes are trophies, not contracts.</b> The meta-analysis is 128 studies deep: expected
+  performance-contingent rewards crowd out intrinsic motivation. Winning predicts two weeks of commits,
+  then nothing. Access-prizes (dinner with the founding team, pitch time with the exec who owns the
+  problem, early access) dodge the trap, cost you almost nothing, and are worth more than the iPad.</p>
+  <p><b>Who shows up is a design output.</b> The deterrents that keep first-timers away are culture, not
+  content: competitive climate, endurance norms, fear of insufficient experience. And theme is a
+  demographic instrument — a hardware hackathon reframed as "Wear &amp; Care" tripled women's
+  participation with zero quotas. Childcare, quiet rooms, humane hours, and non-coder prize categories
+  (NASA judges storytelling) are not niceties; they're the recruitment strategy for the 99%.</p>
+  <div class="callout"><b>One hard tradeoff you must call:</b> familiar teams ship, stranger teams
+  transform (CSCW 2016). You cannot max both in one event. Conversion goal → mix strangers and eat the
+  output cost. Shipping goal → let skill-fit teams pre-form.</div>
+
+  <h2 id="ch3">Chapter 3 — The countdown</h2>
+  <p>The full gantt lives in the <a href="timeline.html" style="color:var(--blurple);font-weight:600">Master
+  Timeline</a> with every deadline and number, in two tracks (flagship weekend at T-5 months; 3–12h
+  compression event at T-6 weeks). The shape of it:</p>
+  <ul>
+    <li><b>T-4–6 months:</b> goal, format, leadership team, date, venue hunt starts.</li>
+    <li><b>T-3–4 months:</b> budget, prospectus, sponsor pipeline opens, placeholder site.</li>
+    <li><b>T-3 months:</b> registration opens, marketing live.</li>
+    <li><b>T-2 months:</b> judges + mentors recruited, workshops, vendors.</li>
+    <li><b>T-1 month:</b> run of show, venue logistics done, comms cadence running.</li>
+    <li><b>T-1 week:</b> 200% registered, single paperwork deadline passed, full-team run-through.</li>
+    <li><b>T-0:</b> the middle is sacred — protect build blocks, feed people, run the ritual.</li>
+    <li><b>T+1 week:</b> surveys, sponsor report + re-up, retro, public recap, next date announced.</li>
+  </ul>
+
+  <h2 id="ch4">Chapter 4 — Money</h2>
+  <p><b>Budget.</b> Big three cost centers: venue, food, prizes. Food $8–10/person/meal (never
+  pizza-only — it's a signal of how much you value people), snacks $10/person, shirts $5–8. Always hold
+  $1–3k contingency; every guide says you will need it. Hack Club ran a world-class 175-person event on
+  $75k and published every transaction — radical transparency is both a trust-builder and a fundraising
+  asset.</p>
+  <p><b>Sponsorship is sales.</b> What sponsors actually buy (pick their lane, then package it):</p>
+  <ol>
+    <li><b>API/product adoption + feedback</b> — DevRel budgets. Sell: "Best Use of X" track (keep X
+    general or creativity dies), workshop slot, dedicated channel, pre-event setup webinar, and
+    <em>their humans walking the floor</em> — presence is the deliverable that predicts sponsor
+    satisfaction, not booth size.</li>
+    <li><b>Recruiting</b> — HR budgets, hottest in autumn. Sell: resume book, interview room, recruiter
+    booth, short opening slot.</li>
+    <li><b>Brand</b> — marketing budgets. Sell: the ambient surfaces (lanyards, shirts, badges),
+    content, association with the scene.</li>
+  </ol>
+  <p>Mechanics: 2–3 page prospectus, three tiers each anchored to ONE of the lanes above, top tier ≤25%
+  of your budget, custom packages always available. First email plain-text with zero links or
+  attachments (spam filters), to a DevRel/HR/Marketing title or the CEO — never a random engineer. Call
+  → same-day customized proposal → up to 3 follow-ups → invoice the second they commit. Q1 and Q4 have
+  the loosest budgets. Enforce prize parity: one sponsor's $50k prize kills every other sponsor's ROI.
+  In 2026, frontier labs will often pay in credits + experts + selection prestige — take it, but don't
+  let credits-only sponsors displace the cash that feeds people.</p>
+  <p><b>After the event, within 48 hours:</b> sponsors get a metrics-and-highlights report (projects on
+  their API, leads, gallery links) and a re-up offer for the next edition. That email is next year's
+  budget.</p>
+
+  <h2 id="ch5">Chapter 5 — The room</h2>
+  <p>The event starts at the invitation and ends at the second closing. Steal this sequence:</p>
+  <p><b>Before.</b> Name the event as a moment, not a meeting. Application form primes builder identity
+  (ask for something they've made). Publish judges early — people apply to be seen by specific humans.
+  Visible waitlist. Countdown content the final week.</p>
+  <p><b>Threshold.</b> A real arrival moment — named check-in, badge, music, a room that says "something
+  happens here." Parker: a passageway that tunes out the prior reality.</p>
+  <p><b>Opening (15 minutes, total).</b> Cold-open with the mission — why this weekend, why these
+  people, why now. Then: the one goal ("working demo, live, 18:00"), the rubric (publish it now, not at
+  judging), rules in five minutes, teams confirmed, go. Never open with wifi passwords.</p>
+  <p><b>The middle.</b> Long protected build blocks. Fixed mentor windows + a help workflow. Mid-point
+  check-in (teams discover at hour 40 they built the wrong thing — a checkpoint at half-time prevents
+  it; teams finish ~25% of what they scope, so push brutal scoping early). Meals as the social glue —
+  shared tables, not grab-and-go. One surprise micro-event for energy (midnight award, lightning talks
+  anyone can give, the mascot). For &gt;24h: quiet room, and sleep framed as strategy.</p>
+  <p><b>Demos.</b> Everyone demos. Live. 2–3 minutes, hard-cut timer, no slides. Under ~200 people:
+  full room. Over: science fair (judges circulate, 3 per project, staggered assignments) + top-N on
+  stage. Broadcast judging progress so the room stays calm. The crowd reacting to a thing
+  <em>working</em> is the best moment your event will produce — engineer for it.</p>
+  <p><b>Double close.</b> Inward: winner <em>stories</em> (cast them — the doctor, the teacher, the
+  first-timer), a beat of collective reflection. Outward: next date, community channel, where the
+  projects live permanently. Never end on prize logistics.</p>
+
+  <h2 id="ch6">Chapter 6 — Judging <span class="serif" style="font-size:.7em">(or: the courage not to)</span></h2>
+  <ul>
+    <li><b>The math first:</b> ~1 submitted project per 4 attendees. Judges needed = ⌈(projects × 3
+    judges × 4 min) / judging window⌉. 175 projects, 2 hours → 18 judges. Online: ~30 projects ≈ 5 hours
+    per judge; give a 1–2 week window.</li>
+    <li><b>Stack ranking beats scorecards.</b> Each judge returns only a top 3 (3/2/1 points).
+    Normalizes harsh vs. generous judges, runs in a spreadsheet, and you personally validate +
+    cheating-check the bubbled-up top 5 before announcing.</li>
+    <li><b>Publish the rubric before hacking starts</b> and run a 15-minute judge calibration. Solid
+    spine: working demo, technical execution, originality, impact. Differentiators worth stealing:
+    <em>shippability</em> ("could we use this next week?" — Atlassian), <em>simplicity</em>
+    (HackerEarth), <em>documentation &amp; approachability</em> (GitHub).</li>
+    <li><b>Never eliminate teams before submissions.</b> MLH refuses to sanction it; so should you.
+    Brief judges to reward learning over startup-ness — 99% of hackers aren't fundraising.</li>
+    <li><b>Or don't judge at all.</b> GitHub's completion model (everyone who ships gets the reward),
+    Hack Club's peer emoji-voting, Microsoft's company-wide video votes. If your goal is conversion or
+    community, judging is optional logistics you can delete. Many small named awards beat one winner —
+    multiply the number of winning identities.</li>
+  </ul>
+
+  <h2 id="ch7">Chapter 7 — The afterlife <span class="serif" style="font-size:.7em">(where 93% of events fail)</span></h2>
+  <p>The evidence: winning predicts two weeks. What predicts months is <b>skill fit, skill diversity,
+  small teams, and explicit intention</b>. All designable:</p>
+  <ol>
+    <li><b>Before demos, every team writes a next-30-days plan.</b> Two lines. Intention formed at peak
+    motivation is the single cheapest survival intervention.</li>
+    <li><b>Announce the container during the event:</b> the follow-up demo day, the monthly hack night,
+    the incubation slot, the manager-sanctioned Friday. Projects and identities both decay without a
+    home.</li>
+    <li><b>Steal Facebook's Prototype Forum:</b> demos to people with power happen 1–2 weeks
+    <em>after</em> the build — polished pitches to an audience that can green-light, not 3am slideware.
+    For companies this is the difference between demo theater and shipped outcomes; pair it with
+    Atlassian's trick of judging on shippability.</li>
+    <li><b>Budget the aftermath before the catering.</b> AngelHack: post-event resources are "almost
+    always the highest-impact budget line." Pre-commit funding to put the top 2–3 projects through a
+    validation sprint.</li>
+    <li><b>Permanent public artifacts:</b> project gallery pages, winner-story posts, pinned repos. The
+    event compounds only if the work stays visible. Hand winners the megaphone — their recap posts are
+    your marketing.</li>
+    <li><b>Measure like a funnel, on an honest clock:</b> participants → submissions → flagged → funded
+    → shipped, reported at +2 weeks, +3, +6, +12 months. Internal programs: full ROI cycle is 12–18
+    months; say so up front. The exec pitch numbers: McKinsey claims 25–50% time-to-market cuts; ShipIt
+    produced Jira Service Management; Hack Week produced Discover Weekly; a hackathon produced the Like
+    button.</li>
+  </ol>
+
+  <h2 id="ch8">Chapter 8 — Beyond tech <span class="serif" style="font-size:.7em">(the 50% mission)</span></h2>
+  <p>The portable core is <b>problem + team + deadline + witnessed demo</b>. Everything else is skin.
+  To transplant the format:</p>
+  <ul>
+    <li><b>Schools:</b> demo = anything makeable (a lesson, a zine, a robot, a campaign). Research on
+    youth hackathons shows creativity and self-efficacy gains — when the competitive-endurance culture
+    is stripped out. Teachers as roaming mentors, parents as the demo audience.</li>
+    <li><b>Companies:</b> run it as a pipeline instrument wearing a party costume. Shipment orders
+    before, sacred middle, Prototype Forum after, funded follow-through. Everyone hacks, including the
+    chefs (Shopify) — "not your day job" and "first-timers must hack" (Facebook) are the two rules that
+    keep it alive.</li>
+    <li><b>Civic and social programs:</b> weeks of expert problem-definition first, a real problem-owner
+    per team, and wire the sprint into slow institutions (the Breast Pump hackathon ran a policy summit
+    alongside the build) — otherwise it's theater. Recruit with "you don't need to code."</li>
+    <li><b>Family retreats:</b> the smallest viable hackathon is one household, one Saturday, one
+    problem someone actually has, demos at dinner. The threshold ritual and the witnessed demo do the
+    same identity work at N=6 as at N=600.</li>
+    <li><b>The ethical line</b> (from the format's sharpest critics): keep the ritual, fix the
+    distribution. Participants own their IP, their portfolio, their story. If a sponsor extracts free
+    R&amp;D, name it or don't do it. The person being built is the primary beneficiary — that's the
+    whole point of the 1%→50% project.</li>
+  </ul>
+
+  <h2 id="appendix">Appendix — the cheat numbers</h2>
+  <table>
+    <tr><th>Rule</th><th>Number</th></tr>
+    <tr><td>Overbook (free events)</td><td>200% of capacity by T-1 week</td></tr>
+    <tr><td>Projects per attendee</td><td>1 per 4</td></tr>
+    <tr><td>Judge count</td><td>⌈(projects × 3 × 4 min) / window⌉</td></tr>
+    <tr><td>Scoring</td><td>Stack-rank top 3, 3/2/1 points</td></tr>
+    <tr><td>Pitch / demo length</td><td>60s / 2–3 min, hard cut</td></tr>
+    <tr><td>Team size</td><td>Cap 5, aim 3–4</td></tr>
+    <tr><td>Scope reality</td><td>Teams finish ~25% of plan</td></tr>
+    <tr><td>Food</td><td>$8–10/meal/person, decay 90%→30%, never pizza-only</td></tr>
+    <tr><td>Contingency</td><td>$1–3k, always</td></tr>
+    <tr><td>Venue effort</td><td>Up to 40% of everything; 3 pitches/week; 1 month post-yes</td></tr>
+    <tr><td>Sponsor tiers</td><td>3 tiers, top ≤25% of budget, prize parity</td></tr>
+    <tr><td>Sponsor email</td><td>Plain text, 0 links, 3 follow-ups, invoice on yes</td></tr>
+    <tr><td>Best quarters to raise</td><td>Q1, Q4</td></tr>
+    <tr><td>Prize count</td><td>≥4, priced in access</td></tr>
+    <tr><td>Mentor cadence</td><td>Scheduled circulation; 1 helper per 10–20 in workshops</td></tr>
+    <tr><td>Session planning</td><td>Fill 80–85% of the time, never 100%</td></tr>
+    <tr><td>Project survival baseline</td><td>~7% at 6 months; 25–40% when designed for</td></tr>
+    <tr><td>What predicts survival</td><td>Skill fit + small team + written 30-day intention</td></tr>
+    <tr><td>Exec demo timing</td><td>1–2 weeks after the build (Prototype Forum)</td></tr>
+    <tr><td>Internal ROI clock</td><td>12–18 months, say it up front</td></tr>
+  </table>
+  <p style="margin-top:26px"><a class="btn primary" href="timeline.html">Open the Master Timeline <span class="arr">→</span></a>
+  <a class="btn ghost" style="margin-left:8px" href="downloads/hackathon-playbook-full.zip" download>Download as markdown ↓</a></p>
+  </article>
+</div></section>
+
+<footer class="site"><div class="wrap cols">
+  <div><div class="fbrand">The Hackathon Playbook</div>Distilled from 35+ playbooks &amp; research papers — full source register ships in the download.</div>
+  <div style="text-align:right"><a href="./">Home</a> · <a href="timeline.html">Timeline</a> · <a href="templates.html">Templates</a> · <a href="agent-pack.html">Agent Pack</a></div>
+</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('.toc a')];
+const obs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.hash==='#'+e.target.id));}
+}),{rootMargin:'-20% 0px -70% 0px'});
+links.forEach(l=>{const t=document.querySelector(l.hash);if(t)obs.observe(t);});
+</script>
+</body>
+</html>
